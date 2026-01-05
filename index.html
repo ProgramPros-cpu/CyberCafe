@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>ডিজিটাল সেবা ও তথ্য কেন্দ্র | আধার, প্যান ও রেশন কার্ড পরিষেবা - সুদিহি</title>
+    <meta name="description" content="সুদিহি, পশ্চিম পাড়ার বিশ্বস্ত ডিজিটাল সেবা কেন্দ্র। এখানে আধার কার্ড আপডেট, নতুন প্যান কার্ড, ভোটার কার্ড, WB রেশন কার্ড সংশোধন, মোবাইল রিপেয়ারিং এবং ওয়েবসাইট তৈরির কাজ করা হয়।">
+    <meta name="keywords" content="Digital Seva Kendra Sudihi, Aadhaar Card Update West Bengal, WB Ration Card Correction, Pan Card Agent near me, Mobile Software Repair Sudihi, Web Development West Bengal, Online Form Fillup">
+    <meta name="author" content="Digital Seva & Info Centre">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="business.business">
+    <meta property="og:url" content="https://digitalseva.com/">
+    <meta property="og:title" content="ডিজিটাল সেবা ও তথ্য কেন্দ্র | সমস্ত অনলাইন কাজের সমাধান">
+    <meta property="og:description" content="আধার, প্যান, রেশন কার্ড আপডেট এবং টেকনিক্যাল সলিউশনের জন্য আজই যোগাযোগ করুন ৯৭৪৯৫০৫১০১ নম্বরে।">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80">
+
+    <!-- Schema Markup for Local Business (SEO Gold) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Digital Seva & Info Centre",
+      "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+      "telephone": "+919749505101",
+      "email": "info@digitalseva.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Sudihi, Paschim Para",
+        "addressLocality": "Durgapur",
+        "addressRegion": "West Bengal",
+        "postalCode": "713359",
+        "addressCountry": "IN"
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "10:00",
+        "closes": "21:00"
+      },
+      "priceRange": "₹"
+    }
+    </script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <style>
+        body {
+            font-family: 'Noto Sans Bengali', sans-serif;
+            background-color: #f8fafc;
+            overflow-x: hidden;
+        }
+        
+        .hero-section {
+            background-image: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 58, 138, 0.9) 100%), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        .blob {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(180deg, #f97316 0%, #fbbf24 100%);
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+            animation: moveBlob 10s infinite alternate;
+            z-index: 0;
+        }
+        @keyframes moveBlob {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(50px, 50px) scale(1.1); }
+        }
+
+        .service-card {
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+            background: white;
+            height: 100%;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(30, 58, 138, 0.1);
+            border-color: #1e40af;
+        }
+        .service-card:hover .icon-box {
+            background-color: #1e40af;
+            color: white;
+        }
+
+        .text-highlight { color: #f97316; }
+
+        .btn-official {
+            background: linear-gradient(to right, #1e40af, #1e3a8a);
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+        .btn-official:hover {
+            background: linear-gradient(to right, #1e3a8a, #0f172a);
+            box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
+        }
+
+        #toast {
+            visibility: hidden;
+            min-width: 300px;
+            background-color: #1e293b;
+            color: #fff;
+            text-align: center;
+            border-radius: 8px;
+            padding: 16px;
+            position: fixed;
+            z-index: 100;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%) translateY(20px);
+            opacity: 0;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #22c55e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        #toast.show {
+            visibility: visible;
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+            bottom: 50px;
+        }
+        #toast.error { border-left-color: #ef4444; }
+
+        /* OTP Specific Styles */
+        .phone-auth-container input:focus {
+            border-color: #f97316;
+            ring: 2px solid #fed7aa;
+        }
+        #recaptcha-container {
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        html { scroll-behavior: smooth; }
+    </style>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            blue: '#0f172a',
+                            primary: '#1e40af',
+                            orange: '#f97316',
+                            yellow: '#fbbf24',
+                            gray: '#f1f5f9',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="text-slate-700 antialiased bg-brand-gray">
+
+    <!-- Top Info Bar -->
+    <div class="bg-brand-blue text-slate-300 text-xs py-2 border-b border-slate-700">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-2">
+            <div class="flex gap-6 items-center flex-wrap justify-center md:justify-start">
+                <span class="flex items-center gap-2 hover:text-white transition cursor-pointer"><i data-lucide="phone" class="w-3 h-3 text-brand-orange"></i> +91 9749505101</span>
+                <span class="hidden sm:flex items-center gap-2 hover:text-white transition cursor-pointer"><i data-lucide="mail" class="w-3 h-3 text-brand-orange"></i> info@digitalseva.com</span>
+                <span class="flex items-center gap-2 text-brand-yellow font-semibold"><i data-lucide="clock" class="w-3 h-3"></i> সকাল ১০টা - রাত ৯টা</span>
+            </div>
+            <div class="flex gap-4 items-center justify-center md:justify-end">
+                <span class="opacity-80 hidden sm:inline">Follow us:</span>
+                <a href="#" class="hover:text-brand-orange transition transform hover:scale-110"><i data-lucide="facebook" class="w-4 h-4"></i></a>
+                <a href="https://wa.me/919749505101" class="hover:text-green-500 transition transform hover:scale-110"><i data-lucide="message-circle" class="w-4 h-4"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50 border-b border-gray-200">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-3 group cursor-pointer">
+                <div class="bg-brand-primary text-white p-2.5 rounded-lg shadow-md">
+                    <i data-lucide="files" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl md:text-2xl font-bold text-brand-blue leading-none tracking-tight">ডিজিটাল সেবা</h1>
+                    <p class="text-xs text-brand-orange font-bold tracking-widest uppercase">ও তথ্য কেন্দ্র</p>
+                </div>
+            </div>
+
+            <div class="hidden lg:flex items-center gap-6 font-medium text-slate-600">
+                <a href="#home" class="hover:text-brand-primary transition flex items-center gap-1.5"><i data-lucide="home" class="w-4 h-4"></i> হোম</a>
+                <a href="#services" class="hover:text-brand-primary transition flex items-center gap-1.5"><i data-lucide="file-check" class="w-4 h-4"></i> পরিষেবাসমূহ</a>
+                <a href="#about" class="hover:text-brand-primary transition flex items-center gap-1.5"><i data-lucide="info" class="w-4 h-4"></i> আমাদের সম্পর্কে</a>
+            </div>
+            
+            <a href="#contact" class="hidden lg:flex btn-official text-white px-6 py-2.5 rounded-lg font-bold shadow-md items-center gap-2">
+                যোগাযোগ <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+
+            <button id="mobile-menu-btn" class="lg:hidden text-brand-blue p-2 hover:bg-slate-100 rounded-lg transition">
+                <i data-lucide="menu" class="w-7 h-7"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 shadow-xl absolute w-full left-0 z-40">
+            <a href="#home" class="block py-4 px-6 border-b border-gray-50 hover:bg-slate-50 font-medium text-slate-700 flex items-center gap-3"><i data-lucide="home" class="w-4 h-4 text-brand-orange"></i> হোম</a>
+            <a href="#services" class="block py-4 px-6 border-b border-gray-50 hover:bg-slate-50 font-medium text-slate-700 flex items-center gap-3"><i data-lucide="file-check" class="w-4 h-4 text-brand-orange"></i> পরিষেবাসমূহ</a>
+            <a href="#about" class="block py-4 px-6 border-b border-gray-50 hover:bg-slate-50 font-medium text-slate-700 flex items-center gap-3"><i data-lucide="info" class="w-4 h-4 text-brand-orange"></i> আমাদের সম্পর্কে</a>
+            <a href="#contact" class="block py-4 px-6 text-brand-primary font-bold bg-blue-50 flex items-center gap-3"><i data-lucide="phone-call" class="w-4 h-4"></i> যোগাযোগ</a>
+        </div>
+    </nav>
+
+    <!-- News Ticker -->
+    <div class="bg-slate-800 text-white text-sm py-2 overflow-hidden flex items-center shadow-inner relative z-20 border-b border-slate-700">
+        <div class="container mx-auto px-4 flex items-center gap-3">
+            <span class="bg-brand-orange px-3 py-0.5 rounded text-xs font-bold uppercase flex items-center gap-1 shrink-0">
+                <i data-lucide="bell" class="w-3 h-3"></i> নোটিশ
+            </span>
+            <marquee class="flex-1 font-medium tracking-wide text-slate-200">
+                পশ্চিমবঙ্গ রেশন কার্ডের আপডেট এবং লিঙ্কের কাজ চলছে • নতুন প্যান কার্ড ও আধার সংশোধনের জন্য যোগাযোগ করুন • আমরা রেসপন্সিভ ওয়েবসাইট ও অ্যান্ড্রয়েড অ্যাপ তৈরি করি।
+            </marquee>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <header id="home" class="hero-section text-white py-12 md:py-24 flex items-center">
+        <div class="blob top-10 left-10"></div>
+        <div class="blob bottom-10 right-10" style="animation-delay: -5s;"></div>
+
+        <div class="container mx-auto px-4 relative z-10 grid md:grid-cols-2 gap-12 items-center">
+            
+            <div class="text-center md:text-left space-y-6">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur border border-white/20 text-brand-yellow font-bold text-xs uppercase tracking-widest">
+                    <span class="w-2 h-2 bg-green-500 rounded-full animate-ping"></span> বিশ্বস্ত প্রতিষ্ঠান
+                </div>
+                
+                <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                    সরকারি ও ডিজিটাল কাজের <br> 
+                    <span class="text-highlight drop-shadow-sm">নির্ভরযোগ্য কেন্দ্র</span>
+                </h1>
+                
+                <p class="text-lg text-slate-300 max-w-xl mx-auto md:mx-0 leading-relaxed font-light border-l-4 border-brand-orange pl-4">
+                    রেশন কার্ড আপডেট, আধার ও প্যান কার্ড, এবং অফলাইন ফর্ম ফিলাপের জন্য আজই আসুন। আমরা আধুনিক ওয়েবসাইট ও অ্যাপ তৈরির সুবিধাও প্রদান করি।
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-4">
+                    <a href="#services" class="btn-official text-white px-8 py-3.5 rounded-lg shadow-lg font-bold transition transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                        <i data-lucide="grid" class="w-5 h-5"></i> সেবা সমূহ
+                    </a>
+                    <a href="tel:+919749505101" class="bg-white/10 backdrop-blur hover:bg-white/20 border border-white/30 text-white px-8 py-3.5 rounded-lg shadow-lg font-bold transition transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                        <i data-lucide="phone" class="w-5 h-5"></i> কল করুন
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Hero Form Card with Phone Auth -->
+            <div class="w-full max-w-md mx-auto md:ml-auto">
+                <div class="bg-white text-slate-800 p-6 md:p-8 rounded-xl shadow-2xl border-t-8 border-brand-primary relative">
+                    <!-- Overlay for loading -->
+                    <div id="form-overlay" class="absolute inset-0 bg-white/90 z-20 hidden flex flex-col items-center justify-center rounded-xl">
+                        <i data-lucide="loader-2" class="w-10 h-10 text-brand-primary animate-spin mb-2"></i>
+                        <p class="text-sm font-semibold text-slate-500">প্রসেসিং হচ্ছে...</p>
+                    </div>
+                    
+                    <div class="flex items-center justify-between mb-6 border-b border-gray-100 pb-4">
+                        <h3 class="text-xl font-bold text-brand-blue flex items-center gap-2">
+                            <i data-lucide="shield-check" class="w-5 h-5 text-brand-primary"></i> ইনকোয়ারি ফর্ম
+                        </h3>
+                    </div>
+
+                    <form id="contactForm" class="space-y-4">
+                        
+                        <!-- Step 1: User Info -->
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 uppercase mb-1 ml-1">আপনার নাম</label>
+                            <input type="text" id="userName" required class="w-full px-4 py-3 bg-slate-50 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition" placeholder="নাম লিখুন">
+                        </div>
+
+                        <!-- Phone Auth Section -->
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 uppercase mb-1 ml-1">ফোন নম্বর (OTP যাবে)</label>
+                            <div class="flex gap-2">
+                                <input type="tel" id="userPhone" value="+91" required class="w-full px-4 py-3 bg-slate-50 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition" placeholder="+919876543210">
+                                <button type="button" id="sendOtpBtn" class="bg-brand-orange text-white px-3 rounded-lg text-xs font-bold whitespace-nowrap hover:bg-orange-600 transition">OTP পাঠান</button>
+                            </div>
+                        </div>
+
+                        <!-- Recaptcha Container -->
+                        <div id="recaptcha-container"></div>
+
+                        <!-- OTP Input (Hidden Initially) -->
+                        <div id="otpSection" class="hidden bg-blue-50 p-3 rounded-lg border border-blue-200">
+                            <label class="block text-xs font-bold text-blue-700 uppercase mb-1 ml-1">OTP লিখুন</label>
+                            <div class="flex gap-2">
+                                <input type="number" id="otpInput" class="w-full px-4 py-2 bg-white border border-blue-300 rounded-lg text-sm focus:outline-none focus:border-brand-primary" placeholder="123456">
+                                <button type="button" id="verifyOtpBtn" class="bg-brand-primary text-white px-4 rounded-lg text-xs font-bold hover:bg-blue-800 transition">যাচাই করুন</button>
+                            </div>
+                            <p class="text-[10px] text-blue-600 mt-1 flex items-center gap-1"><i data-lucide="info" class="w-3 h-3"></i> যাচাই করার পর ফর্ম জমা দিন</p>
+                        </div>
+                        
+                        <!-- Auth Status -->
+                        <div id="authStatus" class="hidden text-xs font-bold text-green-600 flex items-center gap-2 bg-green-50 p-2 rounded mb-2">
+                            <i data-lucide="check-circle" class="w-4 h-4"></i> ফোন নম্বর ভেরিফাইড!
+                        </div>
+
+                        <!-- Service Select -->
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 uppercase mb-1 ml-1">কাজের ধরন</label>
+                            <div class="relative">
+                                <select id="userService" class="w-full px-4 py-3 bg-slate-50 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition appearance-none text-slate-600">
+                                    <option value="Ration Card">রেশন কার্ড (WB Ration Update)</option>
+                                    <option value="Pan Card">প্যান কার্ড (নতুন/সংশোধন)</option>
+                                    <option value="Aadhaar">আধার আপডেট/তৈরি</option>
+                                    <option value="Development">ওয়েবসাইট ও অ্যাপ তৈরি</option>
+                                    <option value="Software/Windows">সফটওয়্যার / উইন্ডোজ</option>
+                                    <option value="Application Writing">ফর্ম ফিলাপ / আবেদন পত্র</option>
+                                </select>
+                                <i data-lucide="chevron-down" class="absolute right-3 top-3.5 w-4 h-4 text-gray-400 pointer-events-none"></i>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button (Disabled until Auth) -->
+                        <button type="submit" id="submitBtn" disabled class="w-full bg-gray-400 cursor-not-allowed text-white py-3.5 rounded-lg font-bold shadow-md transition flex justify-center items-center gap-2">
+                            <span>জমা দিন</span> <i data-lucide="send" class="w-4 h-4"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Banner Section -->
+    <section class="container mx-auto px-4 -mt-16 md:-mt-20 relative z-20">
+        <div class="bg-white p-2 rounded-2xl shadow-xl transform hover:scale-[1.01] transition duration-500">
+            <img 
+                src="Banners.png" 
+                onerror="this.src='https://placehold.co/1200x350/1e3a8a/FFFFFF?text=Digital+Seva+Works:+Aadhaar,+Ration,+Pan+&+Development'" 
+                alt="Our Works Banner" 
+                class="w-full h-auto rounded-xl object-cover border border-gray-100"
+            >
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 max-w-3xl mx-auto">
+                <span class="text-brand-primary font-bold text-sm tracking-widest uppercase mb-2 block">আমাদের পরিষেবাসমূহ</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-blue mb-4">আপনার প্রয়োজনীয় <span class="text-highlight">সকল ডিজিটাল কাজ</span></h2>
+                <div class="w-16 h-1 bg-brand-orange mx-auto rounded-full mb-6"></div>
+                <p class="text-slate-500">সরকারি নথিপত্র থেকে শুরু করে আধুনিক অ্যাপ ডেভেলপমেন্ট - সব কিছুই এক ছাদের তলায়।</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+                <!-- Service 1: Govt ID -->
+                <div class="service-card p-6 rounded-xl group relative overflow-hidden flex flex-col">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-blue-50 rounded-bl-full -mr-4 -mt-4 transition-colors group-hover:bg-blue-100"></div>
+                    <div class="icon-box w-12 h-12 bg-blue-100 text-brand-primary rounded-lg flex items-center justify-center mb-5 transition-colors relative z-10 shrink-0">
+                        <i data-lucide="id-card" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-slate-800 relative z-10">সরকারি পরিচয়পত্র</h3>
+                    <p class="text-sm text-slate-500 mb-4 leading-relaxed relative z-10 flex-grow">রেশন, আধার ও প্যান কার্ডের সমস্ত কাজ নির্ভুলভাবে করা হয়।</p>
+                    <ul class="space-y-2 relative z-10">
+                        <li class="flex items-start gap-2 text-xs font-medium text-slate-700">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 shrink-0"></i> 
+                            <span>WB রেশন কার্ড আপডেট</span>
+                        </li>
+                        <li class="flex items-start gap-2 text-xs font-medium text-slate-700">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 shrink-0"></i> 
+                            <span>আধার ও প্যান কার্ড সেবা</span>
+                        </li>
+                        <li class="flex items-start gap-2 text-xs font-medium text-slate-700">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 shrink-0"></i> 
+                            <span>ভোটার কার্ড আবেদন</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Service 2: Tech Support -->
+                <div class="service-card p-6 rounded-xl group relative overflow-hidden flex flex-col">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-orange-50 rounded-bl-full -mr-4 -mt-4 transition-colors group-hover:bg-orange-100"></div>
+                    <div class="icon-box w-12 h-12 bg-orange-100 text-brand-orange rounded-lg flex items-center justify-center mb-5 transition-colors relative z-10 shrink-0">
+                        <i data-lucide="cpu" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-slate-800 relative z-10">টেকনিক্যাল সাপোর্ট</h3>
+                    <p class="text-sm text-slate-500 mb-4 leading-relaxed relative z-10 flex-grow">কম্পিউটার এবং মোবাইলের সফটওয়্যার সমস্যার সমাধান।</p>
+                    <ul class="space-y-2 relative z-10">
+                        <li class="flex items-start gap-2 text-xs font-medium text-slate-700">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 shrink-0"></i> 
+                            <span>উইন্ডোজ ইনস্টলেশন (OS)</span>
+                        </li>
+                        <li class="flex items-start gap-2 text-xs font-medium text-slate-700">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 shrink-0"></i> 
+                            <span>মোবাইল সফটওয়্যার ফিক্স</span>
+                        </li>
+                        <li class="flex items-start gap-2 text-xs font-medium text-slate-700">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 shrink-0"></i> 
+                            <span>প্যাটার্ন আনলক ও ফ্ল্যাশিং</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Service 3: Writing & Forms -->
+                <div class="service-card p-6 rounded-xl group relative overflow-hidden flex flex-col">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-yellow-50 rounded-bl-full -mr-4 -mt-4 transition-colors group-hover:bg-yellow-100"></div>
+                    <div class="icon-box w-12 h-12 bg-yellow-100 text-yellow-700 rounded-lg flex items-center justify-center mb-5 transition-colors relative z-10 shrink-0">
+                        <i data-lucide="pen-tool" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-slate-800 relative z-10">লেখনী ও ফর্ম</h3>
+                    <p class="text-sm text-slate-500 mb-4 leading-relaxed relative z-10 flex-grow">যেকোনো দরকারী আবেদন পত্র লেখা এবং অফলাইন ফর্ম ফিলাপ।</p>
+                    <ul class="space-y-2 relative z-10">
+                        <li class="flex items-start gap-2 text-xs font-medium text-slate-700">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 shrink-0"></i> 
+                            <span>অ্যাপ্লিকেশন লেটার লেখা</span>
+                        </li>
+                        <li class="flex items-start gap-2 text-xs font-medium text-slate-700">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 shrink-0"></i> 
+                            <span>অফলাইন ফর্ম ফিলাপ</span>
+                        </li>
+                        <li class="flex items-start gap-2 text-xs font-medium text-slate-700">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 shrink-0"></i> 
+                            <span>বায়োডাটা / সিভি তৈরি</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Service 4: Web & App Dev -->
+                <div class="service-card p-6 rounded-xl group relative overflow-hidden flex flex-col border-brand-primary">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-indigo-50 rounded-bl-full -mr-4 -mt-4 transition-colors group-hover:bg-indigo-100"></div>
+                    <div class="icon-box w-12 h-12 bg-indigo-100 text-indigo-700 rounded-lg flex items-center justify-center mb-5 transition-colors relative z-10 shrink-0">
+                        <i data-lucide="smartphone" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-slate-800 relative z-10">ডেভেলপমেন্ট</h3>
+                    <p class="text-sm text-slate-500 mb-4 leading-relaxed relative z-10 flex-grow">আপনার ব্যবসার জন্য প্রফেশনাল ওয়েবসাইট এবং অ্যাপ।</p>
+                    <ul class="space-y-2 relative z-10">
+                        <li class="flex items-start gap-2 text-xs font-medium text-slate-700">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 shrink-0"></i> 
+                            <span>রেসপন্সিভ ওয়েবসাইট</span>
+                        </li>
+                        <li class="flex items-start gap-2 text-xs font-medium text-slate-700">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 shrink-0"></i> 
+                            <span>অ্যান্ড্রয়েড অ্যাপ (Android App)</span>
+                        </li>
+                        <li class="flex items-start gap-2 text-xs font-medium text-slate-700">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 shrink-0"></i> 
+                            <span>বিজনেস পোর্টফোলিও</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Poster Section -->
+    <section class="py-16 bg-white text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-bold text-brand-blue mb-8">ডিজিটাল পোস্টার</h2>
+            <div class="inline-block bg-white p-2 rounded-xl border border-slate-200 shadow-xl max-w-lg w-full cursor-default">
+                <div class="border-2 border-brand-primary p-6 bg-white rounded-lg relative overflow-hidden">
+                    
+                    <h1 class="text-3xl text-brand-primary font-bold mb-2 uppercase">ডিজিটাল সেবা কেন্দ্র</h1>
+                    <p class="text-xs font-semibold text-slate-500 border-b border-gray-200 pb-4 mb-4">সরকারি ফর্ম ফিলাপ ও টেকনিক্যাল সলিউশন</p>
+                    
+                    <div class="text-left text-sm mb-6 space-y-4">
+                        <div>
+                            <h4 class="font-bold text-slate-800 mb-2 flex items-center gap-2 bg-slate-100 p-2 rounded"><i data-lucide="check-square" class="w-4 h-4 text-brand-orange"></i> পরিষেবা সমূহ:</h4>
+                            <ul class="grid grid-cols-2 gap-2 text-xs text-slate-600 pl-2">
+                                <li class="flex items-center gap-1.5"><span class="text-brand-primary">•</span> WB রেশন কার্ড</li>
+                                <li class="flex items-center gap-1.5"><span class="text-brand-primary">•</span> আধার ও প্যান সেবা</li>
+                                <li class="flex items-center gap-1.5"><span class="text-brand-primary">•</span> ওয়েবসাইট তৈরি</li>
+                                <li class="flex items-center gap-1.5"><span class="text-brand-primary">•</span> অ্যান্ড্রয়েড অ্যাপ</li>
+                                <li class="flex items-center gap-1.5"><span class="text-brand-primary">•</span> অফলাইন ফর্ম</li>
+                                <li class="flex items-center gap-1.5"><span class="text-brand-primary">•</span> উইন্ডোজ ইনস্টল</li>
+                                <li class="flex items-center gap-1.5"><span class="text-brand-primary">•</span> মোবাইল সফটওয়্যার</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-brand-primary text-white py-3 rounded-lg">
+                        <h3 class="text-xl font-bold tracking-widest flex items-center justify-center gap-2">
+                            <i data-lucide="phone" class="w-5 h-5"></i> 9749505101
+                        </h3>
+                        <p class="text-[10px] text-blue-200 mt-1 uppercase">সুদিহি, পশ্চিম পাড়া, ৭১৩৩৫৯</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-slate-900 text-slate-300 py-12 border-t-4 border-brand-orange">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
+            
+            <div class="space-y-4">
+                <div class="flex items-center gap-2 text-white">
+                    <i data-lucide="files" class="w-6 h-6 text-brand-orange"></i>
+                    <h3 class="text-lg font-bold">ডিজিটাল সেবা</h3>
+                </div>
+                <p class="text-slate-400 leading-relaxed">
+                    সুদিহি এবং আশেপাশের এলাকার মানুষের জন্য একটি নির্ভরযোগ্য ডিজিটাল সলিউশন পয়েন্ট।
+                </p>
+            </div>
+
+            <div>
+                <h3 class="text-white font-bold text-base mb-4">জনপ্রিয় কাজ</h3>
+                <ul class="space-y-2">
+                    <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 text-brand-orange"></i> রেশন কার্ড আপডেট</li>
+                    <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 text-brand-orange"></i> প্যান ও আধার কার্ড</li>
+                    <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 text-brand-orange"></i> রেসপন্সিভ ওয়েবসাইট</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-white font-bold text-base mb-4">যোগাযোগ</h3>
+                <ul class="space-y-3">
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="map-pin" class="w-4 h-4 text-brand-orange mt-1 shrink-0"></i>
+                        <span>সুদিহি, পশ্চিম পাড়া,<br>পিন - ৭১৩৩৫৯, পশ্চিমবঙ্গ</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i data-lucide="phone" class="w-4 h-4 text-brand-orange shrink-0"></i>
+                        <span>+91 9749505101</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="text-center pt-8 mt-8 border-t border-slate-800 text-xs text-slate-500">
+            &copy; ২০২৪ ডিজিটাল সেবা ও তথ্য কেন্দ্র। সর্বস্বত্ব সংরক্ষিত।
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast">
+        <i data-lucide="check-circle" class="w-5 h-5 text-green-500"></i>
+        <span>ধন্যবাদ! আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।</span>
+    </div>
+
+    <script>
+        lucide.createIcons();
+        
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
+
+    <!-- Firebase Logic -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInWithCustomToken, RecaptchaVerifier, signInWithPhoneNumber, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-analytics.js";
+
+        // CONFIG LOGIC
+        let firebaseConfig;
+        let appId = 'default-app-id';
+
+        const prodConfig = {
+          apiKey: "AIzaSyBNIrtGAR6ZAUuPRs-dBu4kwRywgtZXr0Q",
+          authDomain: "thing-7.firebaseapp.com",
+          projectId: "thing-7",
+          storageBucket: "thing-7.firebasestorage.app",
+          messagingSenderId: "252555951830",
+          appId: "1:252555951830:web:d73afa0169eafb61fed377",
+          measurementId: "G-5XYHJPQK2E"
+        };
+
+        if (typeof __firebase_config !== 'undefined') {
+            firebaseConfig = JSON.parse(__firebase_config);
+            if (typeof __app_id !== 'undefined') appId = __app_id;
+        } else {
+            firebaseConfig = prodConfig;
+        }
+
+        const app = initializeApp(firebaseConfig);
+        try { const analytics = getAnalytics(app); } catch(e) {}
+        
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        // Phone Auth Globals
+        window.confirmationResult = null;
+        let currentUser = null;
+
+        // Init Auth - Only Custom Token if available (Canvas)
+        const initAuth = async () => {
+            if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                try {
+                    await signInWithCustomToken(auth, __initial_auth_token);
+                } catch (error) {
+                    console.error("Custom Token Error:", error);
+                }
+            }
+        };
+
+        initAuth();
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                currentUser = user;
+                document.getElementById('authStatus').classList.remove('hidden');
+                document.getElementById('submitBtn').disabled = false;
+                document.getElementById('submitBtn').classList.remove('bg-gray-400', 'cursor-not-allowed');
+                document.getElementById('submitBtn').classList.add('bg-brand-official', 'hover:bg-blue-900');
+                // Hide OTP sections
+                document.getElementById('otpSection').classList.add('hidden');
+                document.getElementById('recaptcha-container').classList.add('hidden');
+            } else {
+                currentUser = null;
+            }
+        });
+
+        // 1. Send OTP
+        document.getElementById('sendOtpBtn').addEventListener('click', () => {
+            const phone = document.getElementById('userPhone').value;
+            if (phone.length < 10) {
+                showToast("সঠিক ফোন নম্বর লিখুন", "error");
+                return;
+            }
+
+            if (!window.recaptchaVerifier) {
+                window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
+                    'size': 'normal',
+                    'callback': (response) => {
+                        // reCAPTCHA solved, allow signInWithPhoneNumber.
+                    }
+                });
+            }
+
+            const appVerifier = window.recaptchaVerifier;
+            
+            signInWithPhoneNumber(auth, phone, appVerifier)
+                .then((confirmationResult) => {
+                    window.confirmationResult = confirmationResult;
+                    document.getElementById('otpSection').classList.remove('hidden');
+                    showToast("OTP পাঠানো হয়েছে", "success");
+                }).catch((error) => {
+                    console.error("SMS Error:", error);
+                    showToast("SMS পাঠানো যায়নি। (Domain whitelist প্রয়োজন)", "error");
+                    // In Canvas Preview, this often fails due to domain restrictions.
+                });
+        });
+
+        // 2. Verify OTP
+        document.getElementById('verifyOtpBtn').addEventListener('click', () => {
+            const code = document.getElementById('otpInput').value;
+            if(!code || !window.confirmationResult) return;
+
+            window.confirmationResult.confirm(code).then((result) => {
+                const user = result.user;
+                showToast("ভেরিফিকেশন সফল!", "success");
+            }).catch((error) => {
+                showToast("ভুল OTP!", "error");
+            });
+        });
+
+        // 3. Submit Form
+        const contactForm = document.getElementById('contactForm');
+        const formOverlay = document.getElementById('form-overlay');
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            if (!currentUser) {
+                showToast("অনুগ্রহ করে ফোন নম্বর ভেরিফাই করুন", "error");
+                return;
+            }
+
+            formOverlay.classList.remove('hidden');
+            formOverlay.classList.add('flex');
+
+            const name = document.getElementById('userName').value;
+            const phone = document.getElementById('userPhone').value;
+            const service = document.getElementById('userService').value;
+
+            try {
+                let colRef;
+                if (typeof __firebase_config !== 'undefined') {
+                     colRef = collection(db, 'artifacts', appId, 'public', 'data', 'contact_inquiries');
+                } else {
+                     colRef = collection(db, 'contact_inquiries');
+                }
+                
+                await addDoc(colRef, {
+                    name: name,
+                    phone: phone,
+                    service: service,
+                    createdAt: serverTimestamp(),
+                    userId: currentUser.uid
+                });
+
+                showToast("ধন্যবাদ! আপনার তথ্য জমা হয়েছে।", "success");
+                contactForm.reset();
+                // Optional: Sign out if you want them to re-verify next time
+                // auth.signOut();
+
+            } catch (error) {
+                console.error("Database Error:", error);
+                showToast("দুঃখিত, তথ্য জমা দেওয়া যায়নি।", "error");
+            } finally {
+                formOverlay.classList.add('hidden');
+                formOverlay.classList.remove('flex');
+            }
+        });
+
+        function showToast(message, type = "success") {
+            const toast = document.getElementById("toast");
+            
+            const iconName = type === 'error' ? 'alert-circle' : 'check-circle';
+            const iconColor = type === 'error' ? 'text-red-500' : 'text-green-500';
+            const borderColor = type === 'error' ? '#ef4444' : '#22c55e';
+            
+            toast.innerHTML = `
+                <i data-lucide="${iconName}" class="w-5 h-5 ${iconColor}"></i>
+                <span>${message}</span>
+            `;
+
+            toast.className = type === "success" ? "success show" : "error show";
+            toast.style.borderLeftColor = borderColor;
+            
+            lucide.createIcons({ root: toast });
+
+            setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 3000);
+        }
+    </script>
+</body>
+</html>
