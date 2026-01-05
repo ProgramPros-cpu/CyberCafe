@@ -28,7 +28,7 @@
         }
         
         .hero-section {
-            background-image: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 58, 138, 0.9) 100%), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-image: linear-gradient(135deg, rgba(0, 42, 139, 0.753) 0%, rgba(30, 58, 138, 0.9) 100%), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -64,6 +64,19 @@
         .service-card:hover .icon-box {
             background-color: #1e40af;
             color: white;
+        }
+        
+        /* Document Card Styles */
+        .doc-card {
+            background: #fff;
+            border-left: 4px solid #1e40af;
+            transition: transform 0.2s;
+        }
+        .doc-card:hover {
+            transform: translateX(5px);
+        }
+        .doc-card.alt {
+            border-left-color: #f97316;
         }
 
         .text-highlight { color: #f97316; }
@@ -182,6 +195,7 @@
             <div class="hidden lg:flex items-center gap-6 font-medium text-slate-600">
                 <a href="#home" class="hover:text-brand-primary transition flex items-center gap-1.5"><i data-lucide="home" class="w-4 h-4"></i> <span data-i18n="nav_home">হোম</span></a>
                 <a href="#services" class="hover:text-brand-primary transition flex items-center gap-1.5"><i data-lucide="file-check" class="w-4 h-4"></i> <span data-i18n="nav_services">পরিষেবাসমূহ</span></a>
+                <a href="#documents-info" class="hover:text-brand-primary transition flex items-center gap-1.5"><i data-lucide="file-text" class="w-4 h-4"></i> <span data-i18n="nav_docs">নথিপত্র</span></a>
                 <a href="#about" class="hover:text-brand-primary transition flex items-center gap-1.5"><i data-lucide="info" class="w-4 h-4"></i> <span data-i18n="nav_about">আমাদের সম্পর্কে</span></a>
             </div>
             
@@ -213,6 +227,7 @@
             </div>
             <a href="#home" class="block py-4 px-6 border-b border-gray-50 hover:bg-slate-50 font-medium text-slate-700 flex items-center gap-3"><i data-lucide="home" class="w-4 h-4 text-brand-orange"></i> <span data-i18n="nav_home">হোম</span></a>
             <a href="#services" class="block py-4 px-6 border-b border-gray-50 hover:bg-slate-50 font-medium text-slate-700 flex items-center gap-3"><i data-lucide="file-check" class="w-4 h-4 text-brand-orange"></i> <span data-i18n="nav_services">পরিষেবাসমূহ</span></a>
+            <a href="#documents-info" class="block py-4 px-6 border-b border-gray-50 hover:bg-slate-50 font-medium text-slate-700 flex items-center gap-3"><i data-lucide="file-text" class="w-4 h-4 text-brand-orange"></i> <span data-i18n="nav_docs">নথিপত্র</span></a>
             <a href="#about" class="block py-4 px-6 border-b border-gray-50 hover:bg-slate-50 font-medium text-slate-700 flex items-center gap-3"><i data-lucide="info" class="w-4 h-4 text-brand-orange"></i> <span data-i18n="nav_about">আমাদের সম্পর্কে</span></a>
             <a href="#contact" class="block py-4 px-6 text-brand-primary font-bold bg-blue-50 flex items-center gap-3"><i data-lucide="phone-call" class="w-4 h-4"></i> <span data-i18n="nav_contact">যোগাযোগ</span></a>
             <button id="mobileLogoutBtn" class="hidden w-full text-left py-4 px-6 text-red-500 font-bold border-t border-gray-100 flex items-center gap-3"><i data-lucide="log-out" class="w-4 h-4"></i> <span data-i18n="nav_logout">লগ আউট</span></button>
@@ -498,6 +513,69 @@
         </div>
     </section>
 
+    <!-- NEW: Required Documents Section -->
+    <section id="documents-info" class="py-16 bg-slate-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl md:text-3xl font-bold text-brand-blue mb-3" data-i18n="doc_sec_title">প্রয়োজনীয় নথিপত্র</h2>
+                <p class="text-slate-500" data-i18n="doc_sec_sub">কাজ দ্রুত করতে আসার আগে এই ডকুমেন্টগুলি সাথে আনুন</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Voter Card Docs -->
+                <div class="doc-card p-5 rounded-lg shadow-sm">
+                    <h3 class="font-bold text-lg mb-3 text-slate-800 flex items-center gap-2">
+                        <i data-lucide="user-check" class="w-5 h-5 text-brand-primary"></i> <span data-i18n="doc_voter_title">ভোটার কার্ড</span>
+                    </h3>
+                    <ul class="space-y-2 text-sm text-slate-600">
+                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-brand-primary"></div><span data-i18n="doc_voter_l1">আধার কার্ড</span></li>
+                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-brand-primary"></div><span data-i18n="doc_voter_l2">পাসপোর্ট ছবি</span></li>
+                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-brand-primary"></div><span data-i18n="doc_voter_l3">জন্ম প্রমাণপত্র / অ্যাডমিট</span></li>
+                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-brand-primary"></div><span data-i18n="doc_voter_l4">অভিভাবকের ভোটার কার্ড</span></li>
+                    </ul>
+                </div>
+
+                <!-- Aadhaar Docs -->
+                <div class="doc-card alt p-5 rounded-lg shadow-sm">
+                    <h3 class="font-bold text-lg mb-3 text-slate-800 flex items-center gap-2">
+                        <i data-lucide="fingerprint" class="w-5 h-5 text-brand-orange"></i> <span data-i18n="doc_aadhaar_title">আধার কার্ড</span>
+                    </h3>
+                    <ul class="space-y-2 text-sm text-slate-600">
+                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-brand-orange"></div><span data-i18n="doc_aadhaar_l1">আসল আধার কার্ড</span></li>
+                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-brand-orange"></div><span data-i18n="doc_aadhaar_l2">প্যান / ভোটার কার্ড</span></li>
+                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-brand-orange"></div><span data-i18n="doc_aadhaar_l3">মোবাইল নম্বর</span></li>
+                    </ul>
+                </div>
+
+                <!-- Ration Docs -->
+                <div class="doc-card p-5 rounded-lg shadow-sm">
+                    <h3 class="font-bold text-lg mb-3 text-slate-800 flex items-center gap-2">
+                        <i data-lucide="credit-card" class="w-5 h-5 text-brand-primary"></i> <span data-i18n="doc_ration_title">রেশন কার্ড</span>
+                    </h3>
+                    <ul class="space-y-2 text-sm text-slate-600">
+                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-brand-primary"></div><span data-i18n="doc_ration_l1">সকলের আধার কার্ড</span></li>
+                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-brand-primary"></div><span data-i18n="doc_ration_l2">চালু মোবাইল</span></li>
+                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-brand-primary"></div><span data-i18n="doc_ration_l3">পুরনো রেশন কার্ড</span></li>
+                    </ul>
+                </div>
+
+                <!-- PAN Docs -->
+                <div class="doc-card alt p-5 rounded-lg shadow-sm">
+                    <h3 class="font-bold text-lg mb-3 text-slate-800 flex items-center gap-2">
+                        <i data-lucide="file-check-2" class="w-5 h-5 text-brand-orange"></i> <span data-i18n="doc_pan_title">প্যান কার্ড</span>
+                    </h3>
+                    <ul class="space-y-2 text-sm text-slate-600">
+                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-brand-orange"></div><span data-i18n="doc_pan_l1">আধার কার্ড</span></li>
+                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-brand-orange"></div><span data-i18n="doc_pan_l2">২ কপি ছবি</span></li>
+                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-brand-orange"></div><span data-i18n="doc_pan_l3">পুরনো প্যান (সংশোধনে)</span></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!-- Poster Section -->
     <section class="py-16 bg-white text-center">
         <div class="container mx-auto px-4">
@@ -624,6 +702,7 @@
                 follow_us: "Follow us:",
                 nav_home: "হোম",
                 nav_services: "পরিষেবাসমূহ",
+                nav_docs: "নথিপত্র",
                 nav_about: "আমাদের সম্পর্কে",
                 nav_contact: "যোগাযোগ",
                 nav_logout: "লগ আউট",
@@ -685,6 +764,25 @@
                 card4_li1: "রেসপন্সিভ ওয়েবসাইট",
                 card4_li2: "অ্যান্ড্রয়েড অ্যাপ (Android App)",
                 card4_li3: "বিজনেস পোর্টফোলিও",
+                doc_sec_title: "প্রয়োজনীয় নথিপত্র",
+                doc_sec_sub: "কাজ দ্রুত করতে আসার আগে এই ডকুমেন্টগুলি সাথে আনুন",
+                doc_voter_title: "ভোটার কার্ড",
+                doc_voter_l1: "আধার কার্ড",
+                doc_voter_l2: "পাসপোর্ট ছবি",
+                doc_voter_l3: "জন্ম প্রমাণপত্র / অ্যাডমিট",
+                doc_voter_l4: "অভিভাবকের ভোটার কার্ড",
+                doc_aadhaar_title: "আধার কার্ড",
+                doc_aadhaar_l1: "আসল আধার কার্ড",
+                doc_aadhaar_l2: "প্যান / ভোটার কার্ড",
+                doc_aadhaar_l3: "মোবাইল নম্বর",
+                doc_ration_title: "রেশন কার্ড",
+                doc_ration_l1: "সকলের আধার কার্ড",
+                doc_ration_l2: "চালু মোবাইল",
+                doc_ration_l3: "পুরনো রেশন কার্ড",
+                doc_pan_title: "প্যান কার্ড",
+                doc_pan_l1: "আধার কার্ড",
+                doc_pan_l2: "২ কপি ছবি",
+                doc_pan_l3: "পুরনো প্যান (সংশোধনে)",
                 poster_head: "ডিজিটাল পোস্টার",
                 poster_sub: "সরকারি ফর্ম ফিলাপ ও টেকনিক্যাল সলিউশন",
                 poster_services: "পরিষেবা সমূহ:",
@@ -708,6 +806,7 @@
                 follow_us: "Follow us:",
                 nav_home: "Home",
                 nav_services: "Services",
+                nav_docs: "Documents",
                 nav_about: "About Us",
                 nav_contact: "Contact",
                 nav_logout: "Logout",
@@ -769,6 +868,25 @@
                 card4_li1: "Responsive Website",
                 card4_li2: "Android App",
                 card4_li3: "Business Portfolio",
+                doc_sec_title: "Required Documents",
+                doc_sec_sub: "Bring these documents to get your work done faster",
+                doc_voter_title: "Voter Card",
+                doc_voter_l1: "Aadhaar Card",
+                doc_voter_l2: "Passport Photo",
+                doc_voter_l3: "Birth Cert / Admit",
+                doc_voter_l4: "Guardian's Voter Card",
+                doc_aadhaar_title: "Aadhaar Card",
+                doc_aadhaar_l1: "Original Aadhaar",
+                doc_aadhaar_l2: "PAN / Voter Card",
+                doc_aadhaar_l3: "Mobile Number",
+                doc_ration_title: "Ration Card",
+                doc_ration_l1: "Family Aadhaar Cards",
+                doc_ration_l2: "Active Mobile",
+                doc_ration_l3: "Old Ration Card",
+                doc_pan_title: "PAN Card",
+                doc_pan_l1: "Aadhaar Card",
+                doc_pan_l2: "2 Copies Photo",
+                doc_pan_l3: "Old PAN (If Correction)",
                 poster_head: "Digital Poster",
                 poster_sub: "Govt Form Fillup & Tech Solutions",
                 poster_services: "Services:",
