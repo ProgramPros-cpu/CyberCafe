@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html lang="bn">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="logo.png" type="image/x-icon">
     <!-- SEO Meta Tags -->
     <title>ডিজিটাল সেবা ও তথ্য কেন্দ্র | আধার, প্যান ও রেশন কার্ড পরিষেবা - সুদিহি</title>
-    <meta name="description" content="সুদিহি, পশ্চিম পাড়ার বিশ্বস্ত ডিজিটাল সেবা কেন্দ্র। এখানে আধার কার্ড আপডেট, নতুন প্যান কার্ড, ভোটার কার্ড, WB রেশন কার্ড সংশোধন, মোবাইল রিপেয়ারিং এবং ওয়েবসাইট তৈরির কাজ করা হয়।">
-    <meta name="keywords" content="Digital Seva Kendra Sudihi, Aadhaar Card Update West Bengal, WB Ration Card Correction, Pan Card Agent near me, Mobile Software Repair Sudihi, Web Development West Bengal, Online Form Fillup">
+    <meta name="description"
+        content="সুদিহি, পশ্চিম পাড়ার বিশ্বস্ত ডিজিটাল সেবা কেন্দ্র। এখানে আধার কার্ড আপডেট, নতুন প্যান কার্ড, ভোটার কার্ড, WB রেশন কার্ড সংশোধন, মোবাইল রিপেয়ারিং এবং ওয়েবসাইট তৈরির কাজ করা হয়।">
+    <meta name="keywords"
+        content="Digital Seva Kendra Sudihi, Aadhaar Card Update West Bengal, WB Ration Card Correction, Pan Card Agent near me, Mobile Software Repair Sudihi, Web Development West Bengal, Online Form Fillup">
     <meta name="author" content="Digital Seva & Info Centre">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    
+
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <!-- Custom Styles -->
     <style>
@@ -26,17 +30,35 @@
             background-color: #f8fafc;
             overflow-x: hidden;
         }
+
         .logo {
             width: 40px;
             height: 40px;
             object-fit: contain;
         }
+
+        /* Update this class */
         .hero-section {
-            background-image: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(30, 58, 138, 0.8) 100%), url('Hero.png');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            /* Remove the image URL */
+            background-color: #0f172a;
             position: relative;
+            overflow: hidden;
+            /* Important to crop the video */
+        }
+
+        /* Add this for the video */
+        #hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Ensures video fills the area */
+            z-index: 0;
+            /* Puts it behind everything */
+            opacity: 0.4;
+            /* Low opacity so text is readable */
         }
 
         .blob {
@@ -50,9 +72,15 @@
             animation: moveBlob 10s infinite alternate;
             z-index: 0;
         }
+
         @keyframes moveBlob {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(50px, 50px) scale(1.1); }
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            100% {
+                transform: translate(50px, 50px) scale(1.1);
+            }
         }
 
         .service-card {
@@ -61,34 +89,40 @@
             background: white;
             height: 100%;
         }
+
         .service-card:hover {
             box-shadow: 0 10px 20px rgba(30, 58, 138, 0.1);
             border-color: #1e40af;
         }
+
         .service-card:hover .icon-box {
             background-color: #1e40af;
             color: white;
         }
-        
+
         /* Document Card Styles */
         .doc-card {
             background: #fff;
             border-left: 4px solid #1e40af;
             transition: transform 0.2s;
         }
-        .doc-card:hover {
-        }
+
+        .doc-card:hover {}
+
         .doc-card.alt {
             border-left-color: #f97316;
         }
 
-        .text-highlight { color: #f97316; }
+        .text-highlight {
+            color: #f97316;
+        }
 
         .btn-official {
             background: linear-gradient(to right, #1e40af, #1e3a8a);
             transition: all 0.3s;
             white-space: nowrap;
         }
+
         .btn-official:hover {
             background: linear-gradient(to right, #1e3a8a, #0f172a);
             box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
@@ -116,18 +150,23 @@
             justify-content: center;
             gap: 10px;
         }
+
         #toast.show {
             visibility: visible;
             opacity: 1;
             transform: translateX(-50%) translateY(0);
             bottom: 50px;
         }
-        #toast.error { border-left-color: #ef4444; }
+
+        #toast.error {
+            border-left-color: #ef4444;
+        }
 
         /* Auth Form Styles */
         .auth-switch-btn {
             @apply text-sm font-semibold pb-2 border-b-2 border-transparent text-slate-500 transition-colors;
         }
+
         .auth-switch-btn.active {
             @apply border-brand-primary text-brand-primary;
         }
@@ -143,9 +182,11 @@
             appearance: none;
         }
 
-        html { scroll-behavior: smooth; }
+        html {
+            scroll-behavior: smooth;
+        }
     </style>
-    
+
     <script>
         tailwind.config = {
             theme: {
@@ -164,20 +205,27 @@
         }
     </script>
 </head>
+
 <body class="text-slate-700 antialiased bg-brand-gray flex flex-col min-h-screen">
 
     <!-- Top Info Bar -->
     <div class="bg-brand-blue text-slate-300 text-xs py-2 border-b border-slate-700">
         <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-2">
             <div class="flex gap-6 items-center flex-wrap justify-center md:justify-start">
-                <span class="flex items-center gap-2 hover:text-white transition cursor-pointer"><i data-lucide="phone" class="w-3 h-3 text-brand-orange"></i> +91 9749505101</span>
-                <span class="hidden sm:flex items-center gap-2 hover:text-white transition cursor-pointer"><i data-lucide="mail" class="w-3 h-3 text-brand-orange"></i> joykumbhakar001@gmail.com</span>
-                <span class="flex items-center gap-2 text-brand-yellow font-semibold"><i data-lucide="clock" class="w-3 h-3"></i> <span data-i18n="opening_hours">সকাল ১০টা - রাত ৯টা</span></span>
+                <span class="flex items-center gap-2 hover:text-white transition cursor-pointer"><i data-lucide="phone"
+                        class="w-3 h-3 text-brand-orange"></i> +91 9749505101</span>
+                <span class="hidden sm:flex items-center gap-2 hover:text-white transition cursor-pointer"><i
+                        data-lucide="mail" class="w-3 h-3 text-brand-orange"></i> joykumbhakar001@gmail.com</span>
+                <span class="flex items-center gap-2 text-brand-yellow font-semibold"><i data-lucide="clock"
+                        class="w-3 h-3"></i> <span data-i18n="opening_hours">সকাল ১০টা - রাত ৯টা</span></span>
             </div>
             <div class="flex gap-4 items-center justify-center md:justify-end">
                 <span class="opacity-80 hidden sm:inline" data-i18n="follow_us">Follow us:</span>
-                <a href="#" class="hover:text-brand-orange transition transform hover:scale-110"><i data-lucide="facebook" class="w-4 h-4"></i></a>
-                <a href="https://wa.me/919749505101" class="hover:text-green-500 transition transform hover:scale-110"><i data-lucide="message-circle" class="w-4 h-4"></i></a>
+                <a href="#" class="hover:text-brand-orange transition transform hover:scale-110"><i
+                        data-lucide="facebook" class="w-4 h-4"></i></a>
+                <a href="https://wa.me/919749505101"
+                    class="hover:text-green-500 transition transform hover:scale-110"><i data-lucide="message-circle"
+                        class="w-4 h-4"></i></a>
             </div>
         </div>
     </div>
@@ -190,27 +238,37 @@
                     <img src="logo.png" alt="Digital Seva Logo" class="logo">
                 </div>
                 <div>
-                    <h1 class="text-xl md:text-2xl font-bold text-brand-blue leading-none tracking-tight" data-i18n="brand_name">ডিজিটাল সেবা</h1>
-                    <p class="text-xs text-brand-orange font-bold tracking-widest uppercase" data-i18n="brand_sub">ও তথ্য কেন্দ্র</p>
+                    <h1 class="text-xl md:text-2xl font-bold text-brand-blue leading-none tracking-tight"
+                        data-i18n="brand_name">ডিজিটাল সেবা</h1>
+                    <p class="text-xs text-brand-orange font-bold tracking-widest uppercase" data-i18n="brand_sub">ও
+                        তথ্য কেন্দ্র</p>
                 </div>
             </div>
 
             <div class="hidden lg:flex items-center gap-6 font-medium text-slate-600">
-                <a href="#home" class="hover:text-brand-primary transition flex items-center gap-1.5"><i data-lucide="home" class="w-4 h-4"></i> <span data-i18n="nav_home">হোম</span></a>
-                <a href="#services" class="hover:text-brand-primary transition flex items-center gap-1.5"><i data-lucide="file-check" class="w-4 h-4"></i> <span data-i18n="nav_services">পরিষেবাসমূহ</span></a>
-                <a href="#documents-info" class="hover:text-brand-primary transition flex items-center gap-1.5"><i data-lucide="file-text" class="w-4 h-4"></i> <span data-i18n="nav_docs">নথিপত্র</span></a>
-                <a href="#about" class="hover:text-brand-primary transition flex items-center gap-1.5"><i data-lucide="info" class="w-4 h-4"></i> <span data-i18n="nav_about">আমাদের সম্পর্কে</span></a>
+                <a href="#home" class="hover:text-brand-primary transition flex items-center gap-1.5"><i
+                        data-lucide="home" class="w-4 h-4"></i> <span data-i18n="nav_home">হোম</span></a>
+                <a href="#services" class="hover:text-brand-primary transition flex items-center gap-1.5"><i
+                        data-lucide="file-check" class="w-4 h-4"></i> <span
+                        data-i18n="nav_services">পরিষেবাসমূহ</span></a>
+                <a href="#documents-info" class="hover:text-brand-primary transition flex items-center gap-1.5"><i
+                        data-lucide="file-text" class="w-4 h-4"></i> <span data-i18n="nav_docs">নথিপত্র</span></a>
+                <a href="#about" class="hover:text-brand-primary transition flex items-center gap-1.5"><i
+                        data-lucide="info" class="w-4 h-4"></i> <span data-i18n="nav_about">আমাদের সম্পর্কে</span></a>
             </div>
-            
+
             <div class="hidden lg:flex items-center gap-3">
                 <!-- Language Selector -->
-                <select id="langSelector" class="lang-select bg-slate-100 border border-slate-200 text-slate-700 text-sm rounded-lg focus:ring-brand-primary focus:border-brand-primary block p-2 px-3 font-semibold cursor-pointer hover:bg-slate-200 transition">
+                <select id="langSelector"
+                    class="lang-select bg-slate-100 border border-slate-200 text-slate-700 text-sm rounded-lg focus:ring-brand-primary focus:border-brand-primary block p-2 px-3 font-semibold cursor-pointer hover:bg-slate-200 transition">
                     <option value="bn">বাংলা</option>
                     <option value="en">English</option>
                 </select>
 
-                 <button id="navLogoutBtn" class="hidden text-sm text-red-500 hover:text-red-700 font-bold px-4" data-i18n="nav_logout">লগ আউট</button>
-                 <a href="#contact" class="btn-official text-white px-6 py-2.5 rounded-lg font-bold shadow-md items-center gap-2 flex">
+                <button id="navLogoutBtn" class="hidden text-sm text-red-500 hover:text-red-700 font-bold px-4"
+                    data-i18n="nav_logout">লগ আউট</button>
+                <a href="#contact"
+                    class="btn-official text-white px-6 py-2.5 rounded-lg font-bold shadow-md items-center gap-2 flex">
                     <span data-i18n="nav_contact">যোগাযোগ</span> <i data-lucide="arrow-right" class="w-4 h-4"></i>
                 </a>
             </div>
@@ -220,172 +278,239 @@
             </button>
         </div>
 
-        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 shadow-xl absolute w-full left-0 z-40">
+        <div id="mobile-menu"
+            class="hidden lg:hidden bg-white border-t border-gray-100 shadow-xl absolute w-full left-0 z-40">
             <!-- Mobile Lang Selector -->
             <div class="p-4 bg-slate-50 border-b border-slate-100">
-                <select id="mobileLangSelector" class="w-full bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5">
+                <select id="mobileLangSelector"
+                    class="w-full bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5">
                     <option value="bn">ভাষা: বাংলা</option>
                     <option value="en">Language: English</option>
                 </select>
             </div>
-            <a href="#home" class="block py-4 px-6 border-b border-gray-50 hover:bg-slate-50 font-medium text-slate-700 flex items-center gap-3"><i data-lucide="home" class="w-4 h-4 text-brand-orange"></i> <span data-i18n="nav_home">হোম</span></a>
-            <a href="#services" class="block py-4 px-6 border-b border-gray-50 hover:bg-slate-50 font-medium text-slate-700 flex items-center gap-3"><i data-lucide="file-check" class="w-4 h-4 text-brand-orange"></i> <span data-i18n="nav_services">পরিষেবাসমূহ</span></a>
-            <a href="#documents-info" class="block py-4 px-6 border-b border-gray-50 hover:bg-slate-50 font-medium text-slate-700 flex items-center gap-3"><i data-lucide="file-text" class="w-4 h-4 text-brand-orange"></i> <span data-i18n="nav_docs">নথিপত্র</span></a>
-            <a href="#about" class="block py-4 px-6 border-b border-gray-50 hover:bg-slate-50 font-medium text-slate-700 flex items-center gap-3"><i data-lucide="info" class="w-4 h-4 text-brand-orange"></i> <span data-i18n="nav_about">আমাদের সম্পর্কে</span></a>
-            <a href="#contact" class="block py-4 px-6 text-brand-primary font-bold bg-blue-50 flex items-center gap-3"><i data-lucide="phone-call" class="w-4 h-4"></i> <span data-i18n="nav_contact">যোগাযোগ</span></a>
-            <button id="mobileLogoutBtn" class="hidden w-full text-left py-4 px-6 text-red-500 font-bold border-t border-gray-100 flex items-center gap-3"><i data-lucide="log-out" class="w-4 h-4"></i> <span data-i18n="nav_logout">লগ আউট</span></button>
+            <a href="#home"
+                class="block py-4 px-6 border-b border-gray-50 hover:bg-slate-50 font-medium text-slate-700 flex items-center gap-3"><i
+                    data-lucide="home" class="w-4 h-4 text-brand-orange"></i> <span data-i18n="nav_home">হোম</span></a>
+            <a href="#services"
+                class="block py-4 px-6 border-b border-gray-50 hover:bg-slate-50 font-medium text-slate-700 flex items-center gap-3"><i
+                    data-lucide="file-check" class="w-4 h-4 text-brand-orange"></i> <span
+                    data-i18n="nav_services">পরিষেবাসমূহ</span></a>
+            <a href="#documents-info"
+                class="block py-4 px-6 border-b border-gray-50 hover:bg-slate-50 font-medium text-slate-700 flex items-center gap-3"><i
+                    data-lucide="file-text" class="w-4 h-4 text-brand-orange"></i> <span
+                    data-i18n="nav_docs">নথিপত্র</span></a>
+            <a href="#about"
+                class="block py-4 px-6 border-b border-gray-50 hover:bg-slate-50 font-medium text-slate-700 flex items-center gap-3"><i
+                    data-lucide="info" class="w-4 h-4 text-brand-orange"></i> <span data-i18n="nav_about">আমাদের
+                    সম্পর্কে</span></a>
+            <a href="#contact"
+                class="block py-4 px-6 text-brand-primary font-bold bg-blue-50 flex items-center gap-3"><i
+                    data-lucide="phone-call" class="w-4 h-4"></i> <span data-i18n="nav_contact">যোগাযোগ</span></a>
+            <button id="mobileLogoutBtn"
+                class="hidden w-full text-left py-4 px-6 text-red-500 font-bold border-t border-gray-100 flex items-center gap-3"><i
+                    data-lucide="log-out" class="w-4 h-4"></i> <span data-i18n="nav_logout">লগ আউট</span></button>
         </div>
     </nav>
 
     <!-- News Ticker -->
-    <div class="bg-slate-800 text-white text-sm py-2 overflow-hidden flex items-center shadow-inner relative z-20 border-b border-slate-700">
+    <div
+        class="bg-slate-800 text-white text-sm py-2 overflow-hidden flex items-center shadow-inner relative z-20 border-b border-slate-700">
         <div class="container mx-auto px-4 flex items-center gap-3">
-            <span class="bg-brand-orange px-3 py-0.5 rounded text-xs font-bold uppercase flex items-center gap-1 shrink-0">
+            <span
+                class="bg-brand-orange px-3 py-0.5 rounded text-xs font-bold uppercase flex items-center gap-1 shrink-0">
                 <i data-lucide="bell" class="w-3 h-3"></i> <span data-i18n="notice_tag">নোটিশ</span>
             </span>
             <marquee class="flex-1 font-medium tracking-wide text-slate-200" data-i18n="ticker_text">
-                পশ্চিমবঙ্গ রেশন কার্ডের আপডেট এবং লিঙ্কের কাজ চলছে • নতুন প্যান কার্ড ও আধার সংশোধনের জন্য যোগাযোগ করুন • আমরা রেসপন্সিভ ওয়েবসাইট ও অ্যান্ড্রয়েড অ্যাপ তৈরি করি।
+                পশ্চিমবঙ্গ রেশন কার্ডের আপডেট এবং লিঙ্কের কাজ চলছে • নতুন প্যান কার্ড ও আধার সংশোধনের জন্য যোগাযোগ করুন
+                • আমরা রেসপন্সিভ ওয়েবসাইট ও অ্যান্ড্রয়েড অ্যাপ তৈরি করি।
             </marquee>
         </div>
     </div>
 
     <!-- Hero Section -->
-    <header id="home" class="hero-section text-white py-12 md:py-24 flex items-center min-h-[600px]">
-        <div class="blob top-10 left-10"></div>
-        <div class="blob bottom-10 right-10" style="animation-delay: -5s;"></div>
+    <header id="home"
+        class="hero-section text-white py-12 md:py-24 flex items-center min-h-[600px] relative overflow-hidden">
+
+        <video autoplay muted loop playsinline id="hero-video" poster="Hero.png"
+            class="absolute top-0 left-0 w-full h-full object-cover z-0 opacity-40">
+            <source src="hero.mp4" type="video/mp4" media="(max-width: 768px)">
+
+            <source src="heros.mp4" type="video/mp4">
+        </video>
+
+        <div class="absolute inset-0 bg-slate-900/60 z-0"></div>
+
+        <div class="blob top-10 left-10 z-0"></div>
+        <div class="blob bottom-10 right-10 z-0" style="animation-delay: -5s;"></div>
 
         <div class="container mx-auto px-4 relative z-10 grid md:grid-cols-2 gap-12 items-center">
-            
+
             <div class="text-center md:text-left space-y-6">
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur border border-white/20 text-brand-yellow font-bold text-xs uppercase tracking-widest">
-                    <span class="w-2 h-2 bg-green-500 rounded-full animate-ping"></span> <span data-i18n="trusted_tag">বিশ্বস্ত প্রতিষ্ঠান</span>
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur border border-white/20 text-brand-yellow font-bold text-xs uppercase tracking-widest">
+                    <span class="w-2 h-2 bg-green-500 rounded-full animate-ping"></span> <span
+                        data-i18n="trusted_tag">বিশ্বস্ত প্রতিষ্ঠান</span>
                 </div>
-                
+
                 <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                    <span data-i18n="hero_title_1">সরকারি ও ডিজিটাল কাজের</span> <br> 
+                    <span data-i18n="hero_title_1">সরকারি ও ডিজিটাল কাজের</span> <br>
                     <span class="text-highlight drop-shadow-sm" data-i18n="hero_title_2">নির্ভরযোগ্য কেন্দ্র</span>
                 </h1>
-                
-                <p class="text-lg text-slate-300 max-w-xl mx-auto md:mx-0 leading-relaxed font-light border-l-4 border-brand-orange pl-4" data-i18n="hero_desc">
-                    রেশন কার্ড আপডেট, আধার ও প্যান কার্ড, এবং অফলাইন ফর্ম ফিলাপের জন্য আজই আসুন। আমরা আধুনিক ওয়েবসাইট ও অ্যাপ তৈরির সুবিধাও প্রদান করি।
+
+                <p class="text-lg text-slate-300 max-w-xl mx-auto md:mx-0 leading-relaxed font-light border-l-4 border-brand-orange pl-4"
+                    data-i18n="hero_desc">
+                    রেশন কার্ড আপডেট, আধার ও প্যান কার্ড, এবং অফলাইন ফর্ম ফিলাপের জন্য আজই আসুন। আমরা আধুনিক ওয়েবসাইট ও
+                    অ্যাপ তৈরির সুবিধাও প্রদান করি।
                 </p>
-                
+
                 <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-4">
-                    <a href="#services" class="btn-official text-white px-8 py-3.5 rounded-lg shadow-lg font-bold flex items-center justify-center gap-2">
+                    <a href="#services"
+                        class="btn-official text-white px-8 py-3.5 rounded-lg shadow-lg font-bold flex items-center justify-center gap-2">
                         <i data-lucide="grid" class="w-5 h-5"></i> <span data-i18n="btn_services">সেবা সমূহ</span>
                     </a>
-                    <a href="tel:+919749505101" class="bg-white/10 backdrop-blur hover:bg-white/20 border border-white/30 text-white px-8 py-3.5 rounded-lg shadow-lg font-bold flex items-center justify-center gap-2">
+                    <a href="tel:+919749505101"
+                        class="bg-white/10 backdrop-blur hover:bg-white/20 border border-white/30 text-white px-8 py-3.5 rounded-lg shadow-lg font-bold flex items-center justify-center gap-2">
                         <i data-lucide="phone" class="w-5 h-5"></i> <span data-i18n="btn_call">কল করুন</span>
                     </a>
                 </div>
             </div>
-            
-            <!-- Dynamic Auth/Form Card -->
+
             <div class="w-full max-w-md mx-auto md:ml-auto">
-                <div class="bg-white text-slate-800 p-6 md:p-8 rounded-xl shadow-2xl border-t-8 border-brand-primary relative overflow-hidden">
-                    
-                    <!-- Loading Overlay -->
-                    <div id="loadingOverlay" class="absolute inset-0 bg-white/95 z-50 flex flex-col items-center justify-center rounded-xl transition-opacity duration-300">
+                <div
+                    class="bg-white text-slate-800 p-6 md:p-8 rounded-xl shadow-2xl border-t-8 border-brand-primary relative overflow-hidden">
+
+                    <div id="loadingOverlay"
+                        class="absolute inset-0 bg-white/95 z-50 flex flex-col items-center justify-center rounded-xl transition-opacity duration-300">
                         <i data-lucide="loader-2" class="w-10 h-10 text-brand-primary animate-spin mb-2"></i>
                         <p class="text-sm font-semibold text-slate-500" data-i18n="loading">লোডিং...</p>
                     </div>
 
-                    <!-- STATE 1: Not Logged In (Auth Forms) -->
                     <div id="authContainer" class="hidden">
                         <div class="flex items-center justify-between mb-6">
                             <h3 class="text-xl font-bold text-brand-blue flex items-center gap-2">
-                                <i data-lucide="log-in" class="w-5 h-5 text-brand-primary"></i> <span data-i18n="login_title">লগ ইন করুন</span>
+                                <i data-lucide="log-in" class="w-5 h-5 text-brand-primary"></i> <span
+                                    data-i18n="login_title">লগ ইন করুন</span>
                             </h3>
                         </div>
 
-                        <!-- Google Auth Button -->
-                        <button id="googleBtn" class="w-full bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 font-bold py-3 px-4 rounded-lg flex items-center justify-center gap-3 transition-all mb-6">
-                            <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" class="w-5 h-5" alt="Google">
+                        <button id="googleBtn"
+                            class="w-full bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 font-bold py-3 px-4 rounded-lg flex items-center justify-center gap-3 transition-all mb-6">
+                            <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+                                class="w-5 h-5" alt="Google">
                             <span data-i18n="google_signin">Google দিয়ে সাইন ইন করুন</span>
                         </button>
 
                         <div class="relative flex py-2 items-center mb-6">
                             <div class="flex-grow border-t border-gray-200"></div>
-                            <span class="flex-shrink-0 mx-4 text-gray-400 text-xs uppercase" data-i18n="or_email">অথবা ইমেইল ব্যবহার করুন</span>
+                            <span class="flex-shrink-0 mx-4 text-gray-400 text-xs uppercase" data-i18n="or_email">অথবা
+                                ইমেইল ব্যবহার করুন</span>
                             <div class="flex-grow border-t border-gray-200"></div>
                         </div>
 
-                        <!-- Tabs -->
                         <div class="flex mb-4 gap-4">
-                            <button id="tabLogin" class="auth-switch-btn active w-1/2" data-i18n="tab_login">লগ ইন</button>
-                            <button id="tabRegister" class="auth-switch-btn w-1/2" data-i18n="tab_register">রেজিস্টার</button>
+                            <button id="tabLogin" class="auth-switch-btn active w-1/2" data-i18n="tab_login">লগ
+                                ইন</button>
+                            <button id="tabRegister" class="auth-switch-btn w-1/2"
+                                data-i18n="tab_register">রেজিস্টার</button>
                         </div>
 
                         <form id="authForm" class="space-y-4">
                             <div>
-                                <label class="block text-xs font-bold text-slate-500 uppercase mb-1 ml-1" data-i18n="label_email">ইমেইল</label>
+                                <label class="block text-xs font-bold text-slate-500 uppercase mb-1 ml-1"
+                                    data-i18n="label_email">ইমেইল</label>
                                 <div class="relative">
                                     <i data-lucide="mail" class="absolute left-3 top-3.5 w-4 h-4 text-gray-400"></i>
-                                    <input type="email" id="authEmail" required class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition" placeholder="example@gmail.com">
+                                    <input type="email" id="authEmail" required
+                                        class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition"
+                                        placeholder="example@gmail.com">
                                 </div>
                             </div>
                             <div>
-                                <label class="block text-xs font-bold text-slate-500 uppercase mb-1 ml-1" data-i18n="label_password">পাসওয়ার্ড</label>
+                                <label class="block text-xs font-bold text-slate-500 uppercase mb-1 ml-1"
+                                    data-i18n="label_password">পাসওয়ার্ড</label>
                                 <div class="relative">
                                     <i data-lucide="lock" class="absolute left-3 top-3.5 w-4 h-4 text-gray-400"></i>
-                                    <input type="password" id="authPassword" required minlength="6" class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition" placeholder="******">
+                                    <input type="password" id="authPassword" required minlength="6"
+                                        class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition"
+                                        placeholder="******">
                                 </div>
                             </div>
-                            <button type="submit" class="w-full bg-brand-primary hover:bg-brand-blue text-white py-3 rounded-lg font-bold shadow-md transition flex justify-center items-center gap-2">
-                                <span id="authBtnText" data-i18n="btn_login_submit">লগ ইন করুন</span> <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            <button type="submit"
+                                class="w-full bg-brand-primary hover:bg-brand-blue text-white py-3 rounded-lg font-bold shadow-md transition flex justify-center items-center gap-2">
+                                <span id="authBtnText" data-i18n="btn_login_submit">লগ ইন করুন</span> <i
+                                    data-lucide="arrow-right" class="w-4 h-4"></i>
                             </button>
                         </form>
                     </div>
 
-                    <!-- STATE 2: Logged In (Inquiry Form) -->
                     <div id="inquiryContainer" class="hidden">
                         <div class="flex items-center justify-between mb-2 pb-2 border-b border-gray-100">
                             <h3 class="text-xl font-bold text-brand-blue flex items-center gap-2">
-                                <i data-lucide="shield-check" class="w-5 h-5 text-green-600"></i> <span data-i18n="inquiry_form_title">ইনকোয়ারি ফর্ম</span>
+                                <i data-lucide="shield-check" class="w-5 h-5 text-green-600"></i> <span
+                                    data-i18n="inquiry_form_title">ইনকোয়ারি ফর্ম</span>
                             </h3>
                             <div class="text-right">
                                 <p class="text-[10px] text-slate-400 uppercase" data-i18n="welcome_user">স্বাগতম</p>
-                                <p id="displayEmail" class="text-xs font-bold text-brand-primary truncate max-w-[120px]"></p>
+                                <p id="displayEmail"
+                                    class="text-xs font-bold text-brand-primary truncate max-w-[120px]"></p>
                             </div>
                         </div>
-                        
-                        <p class="text-xs text-slate-500 mb-4 bg-blue-50 p-2 rounded border border-blue-100" data-i18n="form_hint">
+
+                        <p class="text-xs text-slate-500 mb-4 bg-blue-50 p-2 rounded border border-blue-100"
+                            data-i18n="form_hint">
                             নিচের ফর্মটি পূরণ করুন, আমরা খুব শীঘ্রই আপনার সাথে যোগাযোগ করব।
                         </p>
 
                         <form id="contactForm" class="space-y-4">
                             <div>
-                                <label class="block text-xs font-bold text-slate-500 uppercase mb-1 ml-1" data-i18n="label_name">আপনার নাম</label>
-                                <input type="text" id="userName" required class="w-full px-4 py-3 bg-slate-50 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition" placeholder="নাম লিখুন" data-i18n="ph_name">
+                                <label class="block text-xs font-bold text-slate-500 uppercase mb-1 ml-1"
+                                    data-i18n="label_name">আপনার নাম</label>
+                                <input type="text" id="userName" required
+                                    class="w-full px-4 py-3 bg-slate-50 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition"
+                                    placeholder="নাম লিখুন" data-i18n="ph_name">
                             </div>
 
                             <div>
-                                <label class="block text-xs font-bold text-slate-500 uppercase mb-1 ml-1" data-i18n="label_phone">যোগাযোগের নম্বর</label>
-                                <input type="tel" id="userPhone" required class="w-full px-4 py-3 bg-slate-50 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition" placeholder="+91 9000000000">
+                                <label class="block text-xs font-bold text-slate-500 uppercase mb-1 ml-1"
+                                    data-i18n="label_phone">যোগাযোগের নম্বর</label>
+                                <input type="tel" id="userPhone" required
+                                    class="w-full px-4 py-3 bg-slate-50 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition"
+                                    placeholder="+91 9000000000">
                             </div>
 
                             <div>
-                                <label class="block text-xs font-bold text-slate-500 uppercase mb-1 ml-1" data-i18n="label_service">কাজের ধরন</label>
+                                <label class="block text-xs font-bold text-slate-500 uppercase mb-1 ml-1"
+                                    data-i18n="label_service">কাজের ধরন</label>
                                 <div class="relative">
-                                    <select id="userService" class="w-full px-4 py-3 bg-slate-50 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition appearance-none text-slate-600">
-                                            <option value="Ration Card" data-i18n="opt_ration">রেশন কার্ড (WB Ration Update)</option>
-                                            <option value="Pan Card" data-i18n="opt_pan">প্যান কার্ড (নতুন/সংশোধন)</option>
-                                            <option value="Aadhaar" data-i18n="opt_aadhaar">আধার আপডেট/তৈরি</option>
-                                            <option value="Development" data-i18n="opt_dev">ওয়েবসাইট ও অ্যাপ তৈরি</option>
-                                            <option value="Software/Windows" data-i18n="opt_soft">সফটওয়্যার / উইন্ডোজ</option>
-                                            <option value="Application Writing" data-i18n="opt_app">ফর্ম ফিলাপ / আবেদন পত্র</option>
+                                    <select id="userService"
+                                        class="w-full px-4 py-3 bg-slate-50 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition appearance-none text-slate-600">
+                                        <option value="Ration Card" data-i18n="opt_ration">রেশন কার্ড (WB Ration Update)
+                                        </option>
+                                        <option value="Pan Card" data-i18n="opt_pan">প্যান কার্ড (নতুন/সংশোধন)</option>
+                                        <option value="Aadhaar" data-i18n="opt_aadhaar">আধার আপডেট/তৈরি</option>
+                                        <option value="Development" data-i18n="opt_dev">ওয়েবসাইট ও অ্যাপ তৈরি</option>
+                                        <option value="Software/Windows" data-i18n="opt_soft">সফটওয়্যার / উইন্ডোজ
+                                        </option>
+                                        <option value="Application Writing" data-i18n="opt_app">ফর্ম ফিলাপ / আবেদন পত্র
+                                        </option>
                                     </select>
-                                    <i data-lucide="chevron-down" class="absolute right-3 top-3.5 w-4 h-4 text-gray-400 pointer-events-none"></i>
+                                    <i data-lucide="chevron-down"
+                                        class="absolute right-3 top-3.5 w-4 h-4 text-gray-400 pointer-events-none"></i>
                                 </div>
                             </div>
-                            
+
                             <div>
-                                <label class="block text-xs font-bold text-slate-500 uppercase mb-1 ml-1" data-i18n="label_msg">মেসেজ (ঐচ্ছিক)</label>
-                                <textarea id="userMessage" rows="2" class="w-full px-4 py-2 bg-slate-50 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition" placeholder="আপনার প্রশ্ন..." data-i18n="ph_msg"></textarea>
+                                <label class="block text-xs font-bold text-slate-500 uppercase mb-1 ml-1"
+                                    data-i18n="label_msg">মেসেজ (ঐচ্ছিক)</label>
+                                <textarea id="userMessage" rows="2"
+                                    class="w-full px-4 py-2 bg-slate-50 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition"
+                                    placeholder="আপনার প্রশ্ন..." data-i18n="ph_msg"></textarea>
                             </div>
 
-                            <button type="submit" class="w-full bg-gradient-to-r from-brand-orange to-red-500 text-white py-3.5 rounded-lg font-bold shadow-md hover:shadow-lg flex justify-center items-center gap-2">
-                                <span data-i18n="btn_submit_form">জমা দিন</span> <i data-lucide="send" class="w-4 h-4"></i>
+                            <button type="submit"
+                                class="w-full bg-gradient-to-r from-brand-orange to-red-500 text-white py-3.5 rounded-lg font-bold shadow-md hover:shadow-lg flex justify-center items-center gap-2">
+                                <span data-i18n="btn_submit_form">জমা দিন</span> <i data-lucide="send"
+                                    class="w-4 h-4"></i>
                             </button>
                         </form>
                     </div>
@@ -397,12 +522,9 @@
     <!-- Banner Section -->
     <section class="container mx-auto px-4 -mt-16 md:-mt-20 relative z-20">
         <div class="bg-white p-2 rounded-2xl shadow-xl transform hover:scale-[1.01] transition duration-500">
-            <img 
-                src="Banners.png" 
-                onerror="this.src='https://placehold.co/1200x350/1e3a8a/FFFFFF?text=Digital+Seva+Works:+Aadhaar,+Ration,+Pan+&+Development'" 
-                alt="Our Works Banner" 
-                class="w-full h-auto rounded-xl object-cover border border-gray-100"
-            >
+            <img src="Banners.png"
+                onerror="this.src='https://placehold.co/1200x350/1e3a8a/FFFFFF?text=Digital+Seva+Works:+Aadhaar,+Ration,+Pan+&+Development'"
+                alt="Our Works Banner" class="w-full h-auto rounded-xl object-cover border border-gray-100">
         </div>
     </section>
 
@@ -410,32 +532,41 @@
     <section id="services" class="py-20 bg-white">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16 max-w-3xl mx-auto">
-                <span class="text-brand-primary font-bold text-sm tracking-widest uppercase mb-2 block" data-i18n="serv_uptitle">আমাদের পরিষেবাসমূহ</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-brand-blue mb-4"><span data-i18n="serv_title_1">আপনার প্রয়োজনীয়</span> <span class="text-highlight" data-i18n="serv_title_2">সকল ডিজিটাল কাজ</span></h2>
+                <span class="text-brand-primary font-bold text-sm tracking-widest uppercase mb-2 block"
+                    data-i18n="serv_uptitle">আমাদের পরিষেবাসমূহ</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-blue mb-4"><span data-i18n="serv_title_1">আপনার
+                        প্রয়োজনীয়</span> <span class="text-highlight" data-i18n="serv_title_2">সকল ডিজিটাল কাজ</span>
+                </h2>
                 <div class="w-16 h-1 bg-brand-orange mx-auto rounded-full mb-6"></div>
-                <p class="text-slate-500" data-i18n="serv_desc">সরকারি নথিপত্র থেকে শুরু করে আধুনিক অ্যাপ ডেভেলপমেন্ট - সব কিছুই এক ছাদের তলায়।</p>
+                <p class="text-slate-500" data-i18n="serv_desc">সরকারি নথিপত্র থেকে শুরু করে আধুনিক অ্যাপ ডেভেলপমেন্ট -
+                    সব কিছুই এক ছাদের তলায়।</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
                 <!-- Service 1: Govt ID -->
                 <div class="service-card p-6 rounded-xl group relative overflow-hidden flex flex-col">
-                    <div class="absolute top-0 right-0 w-20 h-20 bg-blue-50 rounded-bl-full -mr-4 -mt-4 transition-colors group-hover:bg-blue-100"></div>
-                    <div class="icon-box w-12 h-12 bg-blue-100 text-brand-primary rounded-lg flex items-center justify-center mb-5 transition-colors relative z-10 shrink-0">
+                    <div
+                        class="absolute top-0 right-0 w-20 h-20 bg-blue-50 rounded-bl-full -mr-4 -mt-4 transition-colors group-hover:bg-blue-100">
+                    </div>
+                    <div
+                        class="icon-box w-12 h-12 bg-blue-100 text-brand-primary rounded-lg flex items-center justify-center mb-5 transition-colors relative z-10 shrink-0">
                         <i data-lucide="id-card" class="w-6 h-6"></i>
                     </div>
-                    <h3 class="text-lg font-bold mb-2 text-slate-800 relative z-10" data-i18n="card1_title">সরকারি পরিচয়পত্র</h3>
-                    <p class="text-sm text-slate-500 mb-4 leading-relaxed relative z-10 flex-grow" data-i18n="card1_desc">রেশন, আধার ও প্যান কার্ডের সমস্ত কাজ নির্ভুলভাবে করা হয়।</p>
+                    <h3 class="text-lg font-bold mb-2 text-slate-800 relative z-10" data-i18n="card1_title">সরকারি
+                        পরিচয়পত্র</h3>
+                    <p class="text-sm text-slate-500 mb-4 leading-relaxed relative z-10 flex-grow"
+                        data-i18n="card1_desc">রেশন, আধার ও প্যান কার্ডের সমস্ত কাজ নির্ভুলভাবে করা হয়।</p>
                     <ul class="space-y-2 relative z-10">
                         <li class="flex items-start gap-2 text-xs font-medium text-slate-700">
-                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 shrink-0"></i> 
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 shrink-0"></i>
                             <span data-i18n="card1_li1">WB রেশন কার্ড আপডেট</span>
                         </li>
                         <li class="flex items-start gap-2 text-xs font-medium text-slate-700">
-                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 shrink-0"></i> 
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 shrink-0"></i>
                             <span data-i18n="card1_li2">আধার ও প্যান কার্ড সেবা</span>
                         </li>
                         <li class="flex items-start gap-2 text-xs font-medium text-slate-700">
-                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 shrink-0"></i> 
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 shrink-0"></i>
                             <span data-i18n="card1_li3">ভোটার কার্ড আবেদন</span>
                         </li>
                     </ul>
@@ -443,23 +574,28 @@
 
                 <!-- Service 2: Tech Support -->
                 <div class="service-card p-6 rounded-xl group relative overflow-hidden flex flex-col">
-                    <div class="absolute top-0 right-0 w-20 h-20 bg-orange-50 rounded-bl-full -mr-4 -mt-4 transition-colors group-hover:bg-orange-100"></div>
-                    <div class="icon-box w-12 h-12 bg-orange-100 text-brand-orange rounded-lg flex items-center justify-center mb-5 transition-colors relative z-10 shrink-0">
+                    <div
+                        class="absolute top-0 right-0 w-20 h-20 bg-orange-50 rounded-bl-full -mr-4 -mt-4 transition-colors group-hover:bg-orange-100">
+                    </div>
+                    <div
+                        class="icon-box w-12 h-12 bg-orange-100 text-brand-orange rounded-lg flex items-center justify-center mb-5 transition-colors relative z-10 shrink-0">
                         <i data-lucide="cpu" class="w-6 h-6"></i>
                     </div>
-                    <h3 class="text-lg font-bold mb-2 text-slate-800 relative z-10" data-i18n="card2_title">টেকনিক্যাল সাপোর্ট</h3>
-                    <p class="text-sm text-slate-500 mb-4 leading-relaxed relative z-10 flex-grow" data-i18n="card2_desc">কম্পিউটার এবং মোবাইলের সফটওয়্যার সমস্যার সমাধান।</p>
+                    <h3 class="text-lg font-bold mb-2 text-slate-800 relative z-10" data-i18n="card2_title">টেকনিক্যাল
+                        সাপোর্ট</h3>
+                    <p class="text-sm text-slate-500 mb-4 leading-relaxed relative z-10 flex-grow"
+                        data-i18n="card2_desc">কম্পিউটার এবং মোবাইলের সফটওয়্যার সমস্যার সমাধান।</p>
                     <ul class="space-y-2 relative z-10">
                         <li class="flex items-start gap-2 text-xs font-medium text-slate-700">
-                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 shrink-0"></i> 
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 shrink-0"></i>
                             <span data-i18n="card2_li1">উইন্ডোজ ইনস্টলেশন (OS)</span>
                         </li>
                         <li class="flex items-start gap-2 text-xs font-medium text-slate-700">
-                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 shrink-0"></i> 
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 shrink-0"></i>
                             <span data-i18n="card2_li2">মোবাইল সফটওয়্যার ফিক্স</span>
                         </li>
                         <li class="flex items-start gap-2 text-xs font-medium text-slate-700">
-                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 shrink-0"></i> 
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 shrink-0"></i>
                             <span data-i18n="card2_li3">প্যাটার্ন আনলক ও ফ্ল্যাশিং</span>
                         </li>
                     </ul>
@@ -467,47 +603,58 @@
 
                 <!-- Service 3: Writing & Forms -->
                 <div class="service-card p-6 rounded-xl group relative overflow-hidden flex flex-col">
-                    <div class="absolute top-0 right-0 w-20 h-20 bg-yellow-50 rounded-bl-full -mr-4 -mt-4 transition-colors group-hover:bg-yellow-100"></div>
-                    <div class="icon-box w-12 h-12 bg-yellow-100 text-yellow-700 rounded-lg flex items-center justify-center mb-5 transition-colors relative z-10 shrink-0">
+                    <div
+                        class="absolute top-0 right-0 w-20 h-20 bg-yellow-50 rounded-bl-full -mr-4 -mt-4 transition-colors group-hover:bg-yellow-100">
+                    </div>
+                    <div
+                        class="icon-box w-12 h-12 bg-yellow-100 text-yellow-700 rounded-lg flex items-center justify-center mb-5 transition-colors relative z-10 shrink-0">
                         <i data-lucide="pen-tool" class="w-6 h-6"></i>
                     </div>
-                    <h3 class="text-lg font-bold mb-2 text-slate-800 relative z-10" data-i18n="card3_title">লেখনী ও ফর্ম</h3>
-                    <p class="text-sm text-slate-500 mb-4 leading-relaxed relative z-10 flex-grow" data-i18n="card3_desc">যেকোনো দরকারী আবেদন পত্র লেখা এবং অফলাইন ফর্ম ফিলাপ।</p>
+                    <h3 class="text-lg font-bold mb-2 text-slate-800 relative z-10" data-i18n="card3_title">লেখনী ও ফর্ম
+                    </h3>
+                    <p class="text-sm text-slate-500 mb-4 leading-relaxed relative z-10 flex-grow"
+                        data-i18n="card3_desc">যেকোনো দরকারী আবেদন পত্র লেখা এবং অফলাইন ফর্ম ফিলাপ।</p>
                     <ul class="space-y-2 relative z-10">
                         <li class="flex items-start gap-2 text-xs font-medium text-slate-700">
-                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 shrink-0"></i> 
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 shrink-0"></i>
                             <span data-i18n="card3_li1">অ্যাপ্লিকেশন লেটার লেখা</span>
                         </li>
                         <li class="flex items-start gap-2 text-xs font-medium text-slate-700">
-                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 shrink-0"></i> 
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 shrink-0"></i>
                             <span data-i18n="card3_li2">অফলাইন ফর্ম ফিলাপ</span>
                         </li>
                         <li class="flex items-start gap-2 text-xs font-medium text-slate-700">
-                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 shrink-0"></i> 
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 shrink-0"></i>
                             <span data-i18n="card3_li3">বায়োডাটা / সিভি তৈরি</span>
                         </li>
                     </ul>
                 </div>
 
                 <!-- Service 4: Web & App Dev -->
-                <div class="service-card p-6 rounded-xl group relative overflow-hidden flex flex-col border-brand-primary">
-                    <div class="absolute top-0 right-0 w-20 h-20 bg-indigo-50 rounded-bl-full -mr-4 -mt-4 transition-colors group-hover:bg-indigo-100"></div>
-                    <div class="icon-box w-12 h-12 bg-indigo-100 text-indigo-700 rounded-lg flex items-center justify-center mb-5 transition-colors relative z-10 shrink-0">
+                <div
+                    class="service-card p-6 rounded-xl group relative overflow-hidden flex flex-col border-brand-primary">
+                    <div
+                        class="absolute top-0 right-0 w-20 h-20 bg-indigo-50 rounded-bl-full -mr-4 -mt-4 transition-colors group-hover:bg-indigo-100">
+                    </div>
+                    <div
+                        class="icon-box w-12 h-12 bg-indigo-100 text-indigo-700 rounded-lg flex items-center justify-center mb-5 transition-colors relative z-10 shrink-0">
                         <i data-lucide="smartphone" class="w-6 h-6"></i>
                     </div>
-                    <h3 class="text-lg font-bold mb-2 text-slate-800 relative z-10" data-i18n="card4_title">ডেভেলপমেন্ট</h3>
-                    <p class="text-sm text-slate-500 mb-4 leading-relaxed relative z-10 flex-grow" data-i18n="card4_desc">আপনার ব্যবসার জন্য প্রফেশনাল ওয়েবসাইট এবং অ্যাপ।</p>
+                    <h3 class="text-lg font-bold mb-2 text-slate-800 relative z-10" data-i18n="card4_title">ডেভেলপমেন্ট
+                    </h3>
+                    <p class="text-sm text-slate-500 mb-4 leading-relaxed relative z-10 flex-grow"
+                        data-i18n="card4_desc">আপনার ব্যবসার জন্য প্রফেশনাল ওয়েবসাইট এবং অ্যাপ।</p>
                     <ul class="space-y-2 relative z-10">
                         <li class="flex items-start gap-2 text-xs font-medium text-slate-700">
-                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 shrink-0"></i> 
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 shrink-0"></i>
                             <span data-i18n="card4_li1">রেসপন্সিভ ওয়েবসাইট</span>
                         </li>
                         <li class="flex items-start gap-2 text-xs font-medium text-slate-700">
-                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 shrink-0"></i> 
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 shrink-0"></i>
                             <span data-i18n="card4_li2">অ্যান্ড্রয়েড অ্যাপ (Android App)</span>
                         </li>
                         <li class="flex items-start gap-2 text-xs font-medium text-slate-700">
-                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 shrink-0"></i> 
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-600 shrink-0"></i>
                             <span data-i18n="card4_li3">বিজনেস পোর্টফোলিও</span>
                         </li>
                     </ul>
@@ -520,58 +667,102 @@
     <section id="documents-info" class="py-16 bg-slate-50">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
-                <h2 class="text-2xl md:text-3xl font-bold text-brand-blue mb-3" data-i18n="doc_sec_title">প্রয়োজনীয় নথিপত্র</h2>
+                <h2 class="text-2xl md:text-3xl font-bold text-brand-blue mb-3" data-i18n="doc_sec_title">প্রয়োজনীয়
+                    নথিপত্র</h2>
                 <p class="text-slate-500" data-i18n="doc_sec_sub">কাজ দ্রুত করতে আসার আগে এই ডকুমেন্টগুলি সাথে আনুন</p>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                
+
                 <!-- Voter Card Docs -->
                 <div class="doc-card p-5 rounded-lg shadow-sm">
                     <h3 class="font-bold text-lg mb-3 text-slate-800 flex items-center gap-2">
-                        <i data-lucide="user-check" class="w-5 h-5 text-brand-primary"></i> <span data-i18n="doc_voter_title">ভোটার কার্ড</span>
+                        <i data-lucide="user-check" class="w-5 h-5 text-brand-primary"></i> <span
+                            data-i18n="doc_voter_title">ভোটার কার্ড</span>
                     </h3>
                     <ul class="space-y-2 text-sm text-slate-600">
-                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-brand-primary"></div><span data-i18n="doc_voter_l1">আধার কার্ড</span></li>
-                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-brand-primary"></div><span data-i18n="doc_voter_l2">পাসপোর্ট ছবি</span></li>
-                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-brand-primary"></div><span data-i18n="doc_voter_l3">জন্ম প্রমাণপত্র / অ্যাডমিট</span></li>
-                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-brand-primary"></div><span data-i18n="doc_voter_l4">অভিভাবকের ভোটার কার্ড</span></li>
+                        <li class="flex items-center gap-2">
+                            <div class="w-1.5 h-1.5 rounded-full bg-brand-primary"></div><span
+                                data-i18n="doc_voter_l1">আধার কার্ড</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <div class="w-1.5 h-1.5 rounded-full bg-brand-primary"></div><span
+                                data-i18n="doc_voter_l2">পাসপোর্ট ছবি</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <div class="w-1.5 h-1.5 rounded-full bg-brand-primary"></div><span
+                                data-i18n="doc_voter_l3">জন্ম প্রমাণপত্র / অ্যাডমিট</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <div class="w-1.5 h-1.5 rounded-full bg-brand-primary"></div><span
+                                data-i18n="doc_voter_l4">অভিভাবকের ভোটার কার্ড</span>
+                        </li>
                     </ul>
                 </div>
 
                 <!-- Aadhaar Docs -->
                 <div class="doc-card alt p-5 rounded-lg shadow-sm">
                     <h3 class="font-bold text-lg mb-3 text-slate-800 flex items-center gap-2">
-                        <i data-lucide="fingerprint" class="w-5 h-5 text-brand-orange"></i> <span data-i18n="doc_aadhaar_title">আধার কার্ড</span>
+                        <i data-lucide="fingerprint" class="w-5 h-5 text-brand-orange"></i> <span
+                            data-i18n="doc_aadhaar_title">আধার কার্ড</span>
                     </h3>
                     <ul class="space-y-2 text-sm text-slate-600">
-                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-brand-orange"></div><span data-i18n="doc_aadhaar_l1">আসল আধার কার্ড</span></li>
-                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-brand-orange"></div><span data-i18n="doc_aadhaar_l2">প্যান / ভোটার কার্ড</span></li>
-                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-brand-orange"></div><span data-i18n="doc_aadhaar_l3">মোবাইল নম্বর</span></li>
+                        <li class="flex items-center gap-2">
+                            <div class="w-1.5 h-1.5 rounded-full bg-brand-orange"></div><span
+                                data-i18n="doc_aadhaar_l1">আসল আধার কার্ড</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <div class="w-1.5 h-1.5 rounded-full bg-brand-orange"></div><span
+                                data-i18n="doc_aadhaar_l2">প্যান / ভোটার কার্ড</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <div class="w-1.5 h-1.5 rounded-full bg-brand-orange"></div><span
+                                data-i18n="doc_aadhaar_l3">মোবাইল নম্বর</span>
+                        </li>
                     </ul>
                 </div>
 
                 <!-- Ration Docs -->
                 <div class="doc-card p-5 rounded-lg shadow-sm">
                     <h3 class="font-bold text-lg mb-3 text-slate-800 flex items-center gap-2">
-                        <i data-lucide="credit-card" class="w-5 h-5 text-brand-primary"></i> <span data-i18n="doc_ration_title">রেশন কার্ড</span>
+                        <i data-lucide="credit-card" class="w-5 h-5 text-brand-primary"></i> <span
+                            data-i18n="doc_ration_title">রেশন কার্ড</span>
                     </h3>
                     <ul class="space-y-2 text-sm text-slate-600">
-                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-brand-primary"></div><span data-i18n="doc_ration_l1">সকলের আধার কার্ড</span></li>
-                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-brand-primary"></div><span data-i18n="doc_ration_l2">চালু মোবাইল</span></li>
-                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-brand-primary"></div><span data-i18n="doc_ration_l3">পুরনো রেশন কার্ড</span></li>
+                        <li class="flex items-center gap-2">
+                            <div class="w-1.5 h-1.5 rounded-full bg-brand-primary"></div><span
+                                data-i18n="doc_ration_l1">সকলের আধার কার্ড</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <div class="w-1.5 h-1.5 rounded-full bg-brand-primary"></div><span
+                                data-i18n="doc_ration_l2">চালু মোবাইল</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <div class="w-1.5 h-1.5 rounded-full bg-brand-primary"></div><span
+                                data-i18n="doc_ration_l3">পুরনো রেশন কার্ড</span>
+                        </li>
                     </ul>
                 </div>
 
                 <!-- PAN Docs -->
                 <div class="doc-card alt p-5 rounded-lg shadow-sm">
                     <h3 class="font-bold text-lg mb-3 text-slate-800 flex items-center gap-2">
-                        <i data-lucide="file-check-2" class="w-5 h-5 text-brand-orange"></i> <span data-i18n="doc_pan_title">প্যান কার্ড</span>
+                        <i data-lucide="file-check-2" class="w-5 h-5 text-brand-orange"></i> <span
+                            data-i18n="doc_pan_title">প্যান কার্ড</span>
                     </h3>
                     <ul class="space-y-2 text-sm text-slate-600">
-                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-brand-orange"></div><span data-i18n="doc_pan_l1">আধার কার্ড</span></li>
-                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-brand-orange"></div><span data-i18n="doc_pan_l2">২ কপি ছবি</span></li>
-                        <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-brand-orange"></div><span data-i18n="doc_pan_l3">পুরনো প্যান (সংশোধনে)</span></li>
+                        <li class="flex items-center gap-2">
+                            <div class="w-1.5 h-1.5 rounded-full bg-brand-orange"></div><span
+                                data-i18n="doc_pan_l1">আধার কার্ড</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <div class="w-1.5 h-1.5 rounded-full bg-brand-orange"></div><span data-i18n="doc_pan_l2">২
+                                কপি ছবি</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <div class="w-1.5 h-1.5 rounded-full bg-brand-orange"></div><span
+                                data-i18n="doc_pan_l3">পুরনো প্যান (সংশোধনে)</span>
+                        </li>
                     </ul>
                 </div>
 
@@ -583,32 +774,45 @@
     <section class="py-16 bg-white text-center">
         <div class="container mx-auto px-4">
             <h2 class="text-2xl font-bold text-brand-blue mb-8" data-i18n="poster_head">ডিজিটাল পোস্টার</h2>
-            <div class="inline-block bg-white p-2 rounded-xl border border-slate-200 shadow-xl max-w-lg w-full cursor-default">
+            <div
+                class="inline-block bg-white p-2 rounded-xl border border-slate-200 shadow-xl max-w-lg w-full cursor-default">
                 <div class="border-2 border-brand-primary p-6 bg-white rounded-lg relative overflow-hidden">
-                    
-                    <h1 class="text-3xl text-brand-primary font-bold mb-2 uppercase" data-i18n="brand_name">ডিজিটাল সেবা কেন্দ্র</h1>
-                    <p class="text-xs font-semibold text-slate-500 border-b border-gray-200 pb-4 mb-4" data-i18n="poster_sub">সরকারি ফর্ম ফিলাপ ও টেকনিক্যাল সলিউশন</p>
-                    
+
+                    <h1 class="text-3xl text-brand-primary font-bold mb-2 uppercase" data-i18n="brand_name">ডিজিটাল সেবা
+                        কেন্দ্র</h1>
+                    <p class="text-xs font-semibold text-slate-500 border-b border-gray-200 pb-4 mb-4"
+                        data-i18n="poster_sub">সরকারি ফর্ম ফিলাপ ও টেকনিক্যাল সলিউশন</p>
+
                     <div class="text-left text-sm mb-6 space-y-4">
                         <div>
-                            <h4 class="font-bold text-slate-800 mb-2 flex items-center gap-2 bg-slate-100 p-2 rounded"><i data-lucide="check-square" class="w-4 h-4 text-brand-orange"></i> <span data-i18n="poster_services">পরিষেবা সমূহ:</span></h4>
+                            <h4 class="font-bold text-slate-800 mb-2 flex items-center gap-2 bg-slate-100 p-2 rounded">
+                                <i data-lucide="check-square" class="w-4 h-4 text-brand-orange"></i> <span
+                                    data-i18n="poster_services">পরিষেবা সমূহ:</span></h4>
                             <ul class="grid grid-cols-2 gap-2 text-xs text-slate-600 pl-2">
-                                <li class="flex items-center gap-1.5"><span class="text-brand-primary">•</span> <span data-i18n="plist_1">WB রেশন কার্ড</span></li>
-                                <li class="flex items-center gap-1.5"><span class="text-brand-primary">•</span> <span data-i18n="plist_2">আধার ও প্যান সেবা</span></li>
-                                <li class="flex items-center gap-1.5"><span class="text-brand-primary">•</span> <span data-i18n="plist_3">ওয়েবসাইট তৈরি</span></li>
-                                <li class="flex items-center gap-1.5"><span class="text-brand-primary">•</span> <span data-i18n="plist_4">অ্যান্ড্রয়েড অ্যাপ</span></li>
-                                <li class="flex items-center gap-1.5"><span class="text-brand-primary">•</span> <span data-i18n="plist_5">অফলাইন ফর্ম</span></li>
-                                <li class="flex items-center gap-1.5"><span class="text-brand-primary">•</span> <span data-i18n="plist_6">উইন্ডোজ ইনস্টল</span></li>
-                                <li class="flex items-center gap-1.5"><span class="text-brand-primary">•</span> <span data-i18n="plist_7">মোবাইল সফটওয়্যার</span></li>
+                                <li class="flex items-center gap-1.5"><span class="text-brand-primary">•</span> <span
+                                        data-i18n="plist_1">WB রেশন কার্ড</span></li>
+                                <li class="flex items-center gap-1.5"><span class="text-brand-primary">•</span> <span
+                                        data-i18n="plist_2">আধার ও প্যান সেবা</span></li>
+                                <li class="flex items-center gap-1.5"><span class="text-brand-primary">•</span> <span
+                                        data-i18n="plist_3">ওয়েবসাইট তৈরি</span></li>
+                                <li class="flex items-center gap-1.5"><span class="text-brand-primary">•</span> <span
+                                        data-i18n="plist_4">অ্যান্ড্রয়েড অ্যাপ</span></li>
+                                <li class="flex items-center gap-1.5"><span class="text-brand-primary">•</span> <span
+                                        data-i18n="plist_5">অফলাইন ফর্ম</span></li>
+                                <li class="flex items-center gap-1.5"><span class="text-brand-primary">•</span> <span
+                                        data-i18n="plist_6">উইন্ডোজ ইনস্টল</span></li>
+                                <li class="flex items-center gap-1.5"><span class="text-brand-primary">•</span> <span
+                                        data-i18n="plist_7">মোবাইল সফটওয়্যার</span></li>
                             </ul>
                         </div>
                     </div>
-                    
+
                     <div class="bg-brand-primary text-white py-3 rounded-lg">
                         <h3 class="text-xl font-bold tracking-widest flex items-center justify-center gap-2">
                             <i data-lucide="phone" class="w-5 h-5"></i> 9749505101
                         </h3>
-                        <p class="text-[10px] text-blue-200 mt-1 uppercase" data-i18n="poster_address">সুদিহি, পশ্চিম পাড়া, ৭১৩৩৫৯</p>
+                        <p class="text-[10px] text-blue-200 mt-1 uppercase" data-i18n="poster_address">সুদিহি, পশ্চিম
+                            পাড়া, ৭১৩৩৫৯</p>
                     </div>
                 </div>
             </div>
@@ -618,7 +822,7 @@
     <!-- Footer -->
     <footer id="contact" class="bg-slate-900 text-slate-300 py-12 border-t-4 border-brand-orange mt-auto">
         <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
-            
+
             <div class="space-y-4">
                 <div class="flex items-center gap-2 text-white">
                     <img src="logo.png" alt="Digital Seva Logo" class="logo w-8 h-8">
@@ -632,9 +836,15 @@
             <div>
                 <h3 class="text-white font-bold text-base mb-4" data-i18n="footer_pop">জনপ্রিয় কাজ</h3>
                 <ul class="space-y-2">
-                    <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 text-brand-orange"></i> <span data-i18n="card1_li1">রেশন কার্ড আপডেট</span></li>
-                    <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 text-brand-orange"></i> <span data-i18n="card1_li2">প্যান ও আধার কার্ড</span></li>
-                    <li class="flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 text-brand-orange"></i> <span data-i18n="card4_li1">রেসপন্সিভ ওয়েবসাইট</span></li>
+                    <li class="flex items-center gap-2"><i data-lucide="chevron-right"
+                            class="w-3 h-3 text-brand-orange"></i> <span data-i18n="card1_li1">রেশন কার্ড আপডেট</span>
+                    </li>
+                    <li class="flex items-center gap-2"><i data-lucide="chevron-right"
+                            class="w-3 h-3 text-brand-orange"></i> <span data-i18n="card1_li2">প্যান ও আধার কার্ড</span>
+                    </li>
+                    <li class="flex items-center gap-2"><i data-lucide="chevron-right"
+                            class="w-3 h-3 text-brand-orange"></i> <span data-i18n="card4_li1">রেসপন্সিভ
+                            ওয়েবসাইট</span></li>
                 </ul>
             </div>
 
@@ -652,9 +862,10 @@
                 </ul>
             </div>
         </div>
-        
+
         <div class="text-center pt-8 mt-8 border-t border-slate-800 text-xs text-slate-500">
-            &copy; 2024 <span data-i18n="brand_name">ডিজিটাল সেবা</span>. <span data-i18n="rights">সর্বস্বত্ব সংরক্ষিত।</span>
+            &copy; 2024 <span data-i18n="brand_name">ডিজিটাল সেবা</span>. <span data-i18n="rights">সর্বস্বত্ব
+                সংরক্ষিত।</span>
         </div>
     </footer>
 
@@ -667,7 +878,7 @@
     <!-- UI Logic & Translations -->
     <script>
         lucide.createIcons();
-        
+
         const btn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
 
@@ -678,11 +889,11 @@
         // Toast Helper
         function showToast(message, type = "success") {
             const toast = document.getElementById("toast");
-            
+
             const iconName = type === 'error' ? 'alert-circle' : 'check-circle';
             const iconColor = type === 'error' ? 'text-red-500' : 'text-green-500';
             const borderColor = type === 'error' ? '#ef4444' : '#22c55e';
-            
+
             toast.innerHTML = `
                 <i data-lucide="${iconName}" class="w-5 h-5 ${iconColor}"></i>
                 <span>${message}</span>
@@ -690,7 +901,7 @@
 
             toast.className = type === "success" ? "success show" : "error show";
             toast.style.borderLeftColor = borderColor;
-            
+
             lucide.createIcons({ root: toast });
 
             setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 3000);
@@ -909,24 +1120,24 @@
         };
 
         const langSelectors = [document.getElementById('langSelector'), document.getElementById('mobileLangSelector')];
-        
+
         // Initialize Language
         function setLanguage(lang) {
-            if(!translations[lang]) return;
+            if (!translations[lang]) return;
 
             document.documentElement.lang = lang;
             localStorage.setItem('appLang', lang);
 
             // Update Dropdowns
-            langSelectors.forEach(sel => { if(sel) sel.value = lang; });
+            langSelectors.forEach(sel => { if (sel) sel.value = lang; });
 
             // Update Text Elements
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
                 const text = translations[lang][key];
-                
+
                 if (text) {
-                    if(el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
                         el.placeholder = text;
                     } else if (el.tagName === 'OPTION') {
                         el.textContent = text;
@@ -936,14 +1147,14 @@
                         // Better approach for this structure: Use innerHTML but careful with icons.
                         // For this specific codebase, most text is wrapped in span or is direct text.
                         // I've wrapped most text in spans with data-i18n to avoid killing icons.
-                        el.innerHTML = text; 
+                        el.innerHTML = text;
                     }
                 }
             });
         }
 
         langSelectors.forEach(sel => {
-            if(sel) sel.addEventListener('change', (e) => setLanguage(e.target.value));
+            if (sel) sel.addEventListener('change', (e) => setLanguage(e.target.value));
         });
 
         // Load saved preference or default to 'bn'
@@ -956,13 +1167,13 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-analytics.js";
-        import { 
-            getAuth, 
-            onAuthStateChanged, 
-            signInWithCustomToken, 
-            GoogleAuthProvider, 
-            signInWithPopup, 
-            createUserWithEmailAndPassword, 
+        import {
+            getAuth,
+            onAuthStateChanged,
+            signInWithCustomToken,
+            GoogleAuthProvider,
+            signInWithPopup,
+            createUserWithEmailAndPassword,
             signInWithEmailAndPassword,
             signOut
         } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
@@ -979,8 +1190,8 @@
             measurementId: "G-NXLJZN2MR7"
         };
 
-        const firebaseConfig = typeof __firebase_config !== 'undefined' 
-            ? JSON.parse(__firebase_config) 
+        const firebaseConfig = typeof __firebase_config !== 'undefined'
+            ? JSON.parse(__firebase_config)
             : userProvidedConfig;
 
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app';
@@ -1004,7 +1215,7 @@
         const tabLogin = document.getElementById('tabLogin');
         const tabRegister = document.getElementById('tabRegister');
         const authBtnText = document.getElementById('authBtnText');
-        
+
         tabLogin.addEventListener('click', () => toggleAuthMode(true));
         tabRegister.addEventListener('click', () => toggleAuthMode(false));
 
@@ -1012,8 +1223,8 @@
             isLoginMode = login;
             // Get current language to set correct button text
             const currentLang = localStorage.getItem('appLang') || 'bn';
-            
-            if(login) {
+
+            if (login) {
                 tabLogin.classList.add('active');
                 tabRegister.classList.remove('active');
                 authBtnText.textContent = translations[currentLang].btn_login_submit;
@@ -1033,7 +1244,7 @@
                     console.error("Custom Token Error:", error);
                 }
             }
-            
+
             onAuthStateChanged(auth, (user) => {
                 loadingOverlay.classList.add('opacity-0');
                 setTimeout(() => loadingOverlay.classList.add('hidden'), 300);
@@ -1084,9 +1295,9 @@
             } catch (error) {
                 console.error(error);
                 let msg = error.message;
-                if(error.code === 'auth/email-already-in-use') msg = 'এই ইমেইলটি ইতিমধ্যে ব্যবহৃত হচ্ছে।';
-                if(error.code === 'auth/wrong-password') msg = 'ভুল পাসওয়ার্ড।';
-                if(error.code === 'auth/user-not-found') msg = 'ব্যবহারকারী পাওয়া যায়নি।';
+                if (error.code === 'auth/email-already-in-use') msg = 'এই ইমেইলটি ইতিমধ্যে ব্যবহৃত হচ্ছে।';
+                if (error.code === 'auth/wrong-password') msg = 'ভুল পাসওয়ার্ড।';
+                if (error.code === 'auth/user-not-found') msg = 'ব্যবহারকারী পাওয়া যায়নি।';
                 showToast(msg, 'error');
             }
         });
@@ -1113,7 +1324,7 @@
             const phone = document.getElementById('userPhone').value;
             const service = document.getElementById('userService').value;
             const message = document.getElementById('userMessage').value;
-            
+
             const btn = e.target.querySelector('button');
             const originalContent = btn.innerHTML;
             btn.innerHTML = '<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i>';
@@ -1121,7 +1332,7 @@
 
             try {
                 const colRef = collection(db, 'artifacts', appId, 'public', 'data', 'contact_inquiries');
-                
+
                 await addDoc(colRef, {
                     userId: user.uid,
                     userEmail: user.email,
@@ -1145,4 +1356,5 @@
         });
     </script>
 </body>
+
 </html>
