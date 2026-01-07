@@ -37,16 +37,12 @@
             object-fit: contain;
         }
 
-        /* Update this class */
         .hero-section {
-            /* Remove the image URL */
             background-color: #0f172a;
             position: relative;
             overflow: hidden;
-            /* Important to crop the video */
         }
 
-        /* Add this for the video */
         #hero-video {
             position: absolute;
             top: 0;
@@ -54,11 +50,8 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            /* Ensures video fills the area */
             z-index: 0;
-            /* Puts it behind everything */
             opacity: 0.4;
-            /* Low opacity so text is readable */
         }
 
         .blob {
@@ -74,13 +67,8 @@
         }
 
         @keyframes moveBlob {
-            0% {
-                transform: translate(0, 0) scale(1);
-            }
-
-            100% {
-                transform: translate(50px, 50px) scale(1.1);
-            }
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(50px, 50px) scale(1.1); }
         }
 
         .service-card {
@@ -169,6 +157,21 @@
 
         .auth-switch-btn.active {
             @apply border-brand-primary text-brand-primary;
+        }
+
+        /* Progress Bar Styles */
+        .progress-container {
+            width: 100%;
+            background-color: #e2e8f0;
+            border-radius: 9999px;
+            height: 12px;
+            overflow: hidden;
+        }
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(to right, #f97316, #fbbf24);
+            transition: width 1s ease-in-out;
+            border-radius: 9999px;
         }
 
         /* Language Selector */
@@ -334,7 +337,6 @@
         <video autoplay muted loop playsinline id="hero-video" poster="Hero.png"
             class="absolute top-0 left-0 w-full h-full object-cover z-0 opacity-40">
             <source src="hero.mp4" type="video/mp4" media="(max-width: 768px)">
-
             <source src="heros.mp4" type="video/mp4">
         </video>
 
@@ -375,6 +377,7 @@
                 </div>
             </div>
 
+            <!-- Enhanced Auth/Form Card with Progress Tracking -->
             <div class="w-full max-w-md mx-auto md:ml-auto">
                 <div
                     class="bg-white text-slate-800 p-6 md:p-8 rounded-xl shadow-2xl border-t-8 border-brand-primary relative overflow-hidden">
@@ -385,6 +388,7 @@
                         <p class="text-sm font-semibold text-slate-500" data-i18n="loading">লোডিং...</p>
                     </div>
 
+                    <!-- STATE 1: Not Logged In -->
                     <div id="authContainer" class="hidden">
                         <div class="flex items-center justify-between mb-6">
                             <h3 class="text-xl font-bold text-brand-blue flex items-center gap-2">
@@ -443,81 +447,160 @@
                         </form>
                     </div>
 
+                    <!-- STATE 2: Logged In (Tabs for Inquiry vs Status) -->
                     <div id="inquiryContainer" class="hidden">
-                        <div class="flex items-center justify-between mb-2 pb-2 border-b border-gray-100">
-                            <h3 class="text-xl font-bold text-brand-blue flex items-center gap-2">
-                                <i data-lucide="shield-check" class="w-5 h-5 text-green-600"></i> <span
-                                    data-i18n="inquiry_form_title">ইনকোয়ারি ফর্ম</span>
-                            </h3>
-                            <div class="text-right">
+                        <div class="flex items-center justify-between mb-4 pb-2 border-b border-gray-100">
+                             <div class="text-left">
                                 <p class="text-[10px] text-slate-400 uppercase" data-i18n="welcome_user">স্বাগতম</p>
-                                <p id="displayEmail"
-                                    class="text-xs font-bold text-brand-primary truncate max-w-[120px]"></p>
+                                <p id="displayEmail" class="text-xs font-bold text-brand-primary truncate max-w-[150px]"></p>
+                            </div>
+                             <div class="flex gap-2">
+                                 <button id="btnShowInquiry" class="px-3 py-1.5 text-xs font-bold bg-brand-primary text-white rounded-md shadow-sm transition">ইনকোয়ারি</button>
+                                 <button id="btnShowStatus" class="px-3 py-1.5 text-xs font-bold bg-slate-200 text-slate-600 rounded-md hover:bg-slate-300 transition">স্ট্যাটাস দেখুন</button>
+                             </div>
+                        </div>
+
+                        <!-- 1. Inquiry Form Tab -->
+                        <div id="userTabInquiry">
+                            <h3 class="text-lg font-bold text-brand-blue flex items-center gap-2 mb-3">
+                                <i data-lucide="send" class="w-4 h-4 text-brand-primary"></i> <span data-i18n="inquiry_form_title">মেসেজ পাঠান</span>
+                            </h3>
+                            <form id="contactForm" class="space-y-3">
+                                <input type="text" id="userName" required class="w-full px-4 py-3 bg-slate-50 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-brand-primary" placeholder="আপনার নাম" data-i18n="ph_name">
+                                <input type="tel" id="userPhone" required class="w-full px-4 py-3 bg-slate-50 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-brand-primary" placeholder="+91 9000000000">
+                                <select id="userService" class="w-full px-4 py-3 bg-slate-50 border border-gray-300 rounded-lg text-sm text-slate-600 focus:outline-none focus:border-brand-primary">
+                                    <option value="Ration Card">রেশন কার্ড (WB Ration)</option>
+                                    <option value="Pan Card">প্যান কার্ড</option>
+                                    <option value="Aadhaar">আধার কার্ড</option>
+                                    <option value="Development">ওয়েবসাইট ও অ্যাপ</option>
+                                    <option value="Online Form">ফর্ম ফিলাপ</option>
+                                    <option value="Other">অন্যান্য</option>
+                                </select>
+                                <textarea id="userMessage" rows="2" class="w-full px-4 py-3 bg-slate-50 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-brand-primary" placeholder="আপনার প্রশ্ন..."></textarea>
+                                <button type="submit" class="w-full bg-gradient-to-r from-brand-orange to-red-500 text-white py-3 rounded-lg font-bold shadow-md hover:shadow-lg flex justify-center items-center gap-2">
+                                    <span data-i18n="btn_submit_form">জমা দিন</span> <i data-lucide="send" class="w-4 h-4"></i>
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- 2. Check Status Tab -->
+                        <div id="userTabStatus" class="hidden">
+                            <h3 class="text-lg font-bold text-brand-blue flex items-center gap-2 mb-3">
+                                <i data-lucide="search" class="w-4 h-4 text-brand-primary"></i> <span>কাজের অগ্রগতি</span>
+                            </h3>
+                            <p class="text-xs text-slate-500 mb-4 bg-yellow-50 border border-yellow-100 p-2 rounded">
+                                আমাদের অফিস থেকে দেওয়া রেফারেন্স নম্বরটি (Reference No) নিচে লিখুন।
+                            </p>
+                            
+                            <div class="flex gap-2 mb-6">
+                                <input type="text" id="checkRefInput" class="flex-1 px-4 py-2 border-2 border-brand-primary/30 rounded-lg text-sm font-bold tracking-widest uppercase placeholder:font-normal placeholder:tracking-normal focus:outline-none focus:border-brand-primary" placeholder="REF-123456">
+                                <button id="btnCheckStatus" class="bg-brand-primary text-white px-4 py-2 rounded-lg font-bold hover:bg-blue-800 transition shadow-md">
+                                    <i data-lucide="search" class="w-5 h-5"></i>
+                                </button>
+                            </div>
+
+                            <!-- Status Result Card -->
+                            <div id="statusResult" class="hidden bg-slate-50 p-4 rounded-xl border border-slate-200 shadow-inner">
+                                <div class="flex justify-between items-center mb-3">
+                                    <span class="text-xs font-bold text-slate-500 uppercase">Current Status</span>
+                                    <span id="resStatusText" class="text-xs font-bold text-brand-orange bg-orange-100 px-2 py-1 rounded border border-orange-200">Processing</span>
+                                </div>
+                                <div class="progress-container mb-2 bg-slate-200 h-3 rounded-full overflow-hidden">
+                                    <div id="resProgressBar" class="progress-bar h-full bg-brand-orange" style="width: 0%"></div>
+                                </div>
+                                <div class="flex justify-between text-[10px] text-slate-400 font-bold uppercase tracking-wide">
+                                    <span>Received</span>
+                                    <span>Working</span>
+                                    <span>Done</span>
+                                </div>
+                                <div class="mt-4 pt-3 border-t border-slate-200 text-center">
+                                    <p id="resServiceName" class="text-xs font-semibold text-slate-700"></p>
+                                    <p class="text-[10px] text-slate-400 mt-1">Thank you for choosing Digital Seva</p>
+                                </div>
                             </div>
                         </div>
 
-                        <p class="text-xs text-slate-500 mb-4 bg-blue-50 p-2 rounded border border-blue-100"
-                            data-i18n="form_hint">
-                            নিচের ফর্মটি পূরণ করুন, আমরা খুব শীঘ্রই আপনার সাথে যোগাযোগ করব।
-                        </p>
-
-                        <form id="contactForm" class="space-y-4">
-                            <div>
-                                <label class="block text-xs font-bold text-slate-500 uppercase mb-1 ml-1"
-                                    data-i18n="label_name">আপনার নাম</label>
-                                <input type="text" id="userName" required
-                                    class="w-full px-4 py-3 bg-slate-50 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition"
-                                    placeholder="নাম লিখুন" data-i18n="ph_name">
-                            </div>
-
-                            <div>
-                                <label class="block text-xs font-bold text-slate-500 uppercase mb-1 ml-1"
-                                    data-i18n="label_phone">যোগাযোগের নম্বর</label>
-                                <input type="tel" id="userPhone" required
-                                    class="w-full px-4 py-3 bg-slate-50 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition"
-                                    placeholder="+91 9000000000">
-                            </div>
-
-                            <div>
-                                <label class="block text-xs font-bold text-slate-500 uppercase mb-1 ml-1"
-                                    data-i18n="label_service">কাজের ধরন</label>
-                                <div class="relative">
-                                    <select id="userService"
-                                        class="w-full px-4 py-3 bg-slate-50 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition appearance-none text-slate-600">
-                                        <option value="Ration Card" data-i18n="opt_ration">রেশন কার্ড (WB Ration Update)
-                                        </option>
-                                        <option value="Pan Card" data-i18n="opt_pan">প্যান কার্ড (নতুন/সংশোধন)</option>
-                                        <option value="Aadhaar" data-i18n="opt_aadhaar">আধার আপডেট/তৈরি</option>
-                                        <option value="Development" data-i18n="opt_dev">ওয়েবসাইট ও অ্যাপ তৈরি</option>
-                                        <option value="Software/Windows" data-i18n="opt_soft">সফটওয়্যার / উইন্ডোজ
-                                        </option>
-                                        <option value="Application Writing" data-i18n="opt_app">ফর্ম ফিলাপ / আবেদন পত্র
-                                        </option>
-                                    </select>
-                                    <i data-lucide="chevron-down"
-                                        class="absolute right-3 top-3.5 w-4 h-4 text-gray-400 pointer-events-none"></i>
-                                </div>
-                            </div>
-
-                            <div>
-                                <label class="block text-xs font-bold text-slate-500 uppercase mb-1 ml-1"
-                                    data-i18n="label_msg">মেসেজ (ঐচ্ছিক)</label>
-                                <textarea id="userMessage" rows="2"
-                                    class="w-full px-4 py-2 bg-slate-50 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition"
-                                    placeholder="আপনার প্রশ্ন..." data-i18n="ph_msg"></textarea>
-                            </div>
-
-                            <button type="submit"
-                                class="w-full bg-gradient-to-r from-brand-orange to-red-500 text-white py-3.5 rounded-lg font-bold shadow-md hover:shadow-lg flex justify-center items-center gap-2">
-                                <span data-i18n="btn_submit_form">জমা দিন</span> <i data-lucide="send"
-                                    class="w-4 h-4"></i>
-                            </button>
-                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </header>
+
+    <!-- ADMIN DASHBOARD SECTION (Hidden by default) -->
+    <section id="adminSection" class="hidden py-10 bg-slate-900 border-t-4 border-brand-yellow">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+                    <i data-lucide="layout-dashboard" class="w-6 h-6 text-brand-yellow"></i> Admin Dashboard
+                </h2>
+                <span class="bg-brand-primary text-xs font-bold px-3 py-1 rounded text-white tracking-wider">OWNER ACCESS</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Admin: Create Order -->
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-slate-700">
+                    <h3 class="font-bold text-lg mb-4 text-slate-800 border-b pb-2 flex items-center gap-2">
+                        <i data-lucide="plus-circle" class="w-5 h-5 text-green-600"></i> Create New Order
+                    </h3>
+                    <form id="adminCreateForm" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                             <div>
+                                 <label class="text-xs font-bold text-slate-500 block mb-1">Customer Name</label>
+                                 <input type="text" id="admCustName" placeholder="Name" class="w-full p-2 border rounded text-sm focus:outline-none focus:border-brand-primary" required>
+                             </div>
+                             <div>
+                                <label class="text-xs font-bold text-slate-500 block mb-1">Ref Number</label>
+                                <div class="flex">
+                                    <input type="text" id="admRefNo" placeholder="Auto Gen" class="w-full p-2 border rounded-l text-sm bg-slate-100 font-mono" readonly>
+                                    <button type="button" id="btnGenRef" class="bg-slate-200 px-2 rounded-r hover:bg-slate-300 border border-l-0"><i data-lucide="refresh-cw" class="w-4 h-4 text-slate-600"></i></button>
+                                </div>
+                             </div>
+                        </div>
+                        <div>
+                            <label class="text-xs font-bold text-slate-500 block mb-1">Service Type</label>
+                            <select id="admService" class="w-full p-2 border rounded text-sm bg-white">
+                                <option value="Ration Card">Ration Card Update</option>
+                                <option value="Pan Card">Pan Card Service</option>
+                                <option value="Aadhaar">Aadhaar Service</option>
+                                <option value="Web Development">Web Development</option>
+                                <option value="Online Form">Online Form Fillup</option>
+                                <option value="Mobile Repair">Mobile Repair</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="w-full bg-green-600 text-white py-2.5 rounded font-bold hover:bg-green-700 shadow-md transition">Create Order & Save</button>
+                    </form>
+                    <div id="adminCreateResult" class="mt-4 p-3 bg-green-50 text-green-800 text-xs font-mono rounded border border-green-200 hidden"></div>
+                </div>
+
+                <!-- Admin: Update Order -->
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-slate-700">
+                    <h3 class="font-bold text-lg mb-4 text-slate-800 border-b pb-2 flex items-center gap-2">
+                        <i data-lucide="edit" class="w-5 h-5 text-blue-600"></i> Update Order Status
+                    </h3>
+                    <div class="flex gap-2 mb-4">
+                        <input type="text" id="admSearchRef" placeholder="Enter Ref No to Search" class="flex-1 p-2 border rounded text-sm focus:outline-none focus:border-brand-primary">
+                        <button id="btnAdmSearch" class="bg-brand-primary text-white px-4 rounded hover:bg-blue-800 shadow-md"><i data-lucide="search" class="w-4 h-4"></i></button>
+                    </div>
+                    
+                    <div id="admUpdateArea" class="hidden space-y-4 border-t pt-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-bold text-slate-500">Customer:</span>
+                            <span id="admEditName" class="text-sm font-bold text-black"></span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <label class="text-xs font-bold text-slate-500 w-24">Progress %:</label>
+                            <input type="number" id="admEditProg" min="0" max="100" class="flex-1 p-2 border rounded text-sm" placeholder="0-100">
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <label class="text-xs font-bold text-slate-500 w-24">Status Text:</label>
+                            <input type="text" id="admEditText" placeholder="e.g. Processing, Done..." class="flex-1 p-2 border rounded text-sm">
+                        </div>
+                        <button id="btnAdmUpdate" class="w-full bg-brand-orange text-white py-2.5 rounded font-bold hover:bg-orange-600 shadow-md transition">Update Progress</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Banner Section -->
     <section class="container mx-auto px-4 -mt-16 md:-mt-20 relative z-20">
@@ -937,7 +1020,7 @@
                 label_password: "পাসওয়ার্ড",
                 btn_login_submit: "লগ ইন করুন",
                 btn_reg_submit: "রেজিস্টার করুন",
-                inquiry_form_title: "ইনকোয়ারি ফর্ম",
+                inquiry_form_title: "মেসেজ পাঠান",
                 welcome_user: "স্বাগতম",
                 form_hint: "নিচের ফর্মটি পূরণ করুন, আমরা খুব শীঘ্রই আপনার সাথে যোগাযোগ করব।",
                 label_name: "আপনার নাম",
@@ -1041,7 +1124,7 @@
                 label_password: "Password",
                 btn_login_submit: "Login Now",
                 btn_reg_submit: "Register Now",
-                inquiry_form_title: "Inquiry Form",
+                inquiry_form_title: "Send Message",
                 welcome_user: "Welcome",
                 form_hint: "Fill out the form below, we will contact you shortly.",
                 label_name: "Your Name",
@@ -1142,11 +1225,6 @@
                     } else if (el.tagName === 'OPTION') {
                         el.textContent = text;
                     } else {
-                        // Check for nested icons (don't overwrite them if possible, or re-add)
-                        // Simple approach: if text node exists, update it.
-                        // Better approach for this structure: Use innerHTML but careful with icons.
-                        // For this specific codebase, most text is wrapped in span or is direct text.
-                        // I've wrapped most text in spans with data-i18n to avoid killing icons.
                         el.innerHTML = text;
                     }
                 }
@@ -1177,7 +1255,7 @@
             signInWithEmailAndPassword,
             signOut
         } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getFirestore, collection, addDoc, serverTimestamp, query, where, getDocs, updateDoc, doc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         // --- Configuration ---
         const userProvidedConfig = {
@@ -1209,6 +1287,10 @@
         const displayEmail = document.getElementById('displayEmail');
         const navLogoutBtn = document.getElementById('navLogoutBtn');
         const mobileLogoutBtn = document.getElementById('mobileLogoutBtn');
+        const adminSection = document.getElementById('adminSection');
+
+        // Admin Email Configuration
+        const ADMIN_EMAIL = "joykumbhakar001@gmail.com";
 
         // Auth Tab Switching Logic
         let isLoginMode = true;
@@ -1221,9 +1303,7 @@
 
         function toggleAuthMode(login) {
             isLoginMode = login;
-            // Get current language to set correct button text
             const currentLang = localStorage.getItem('appLang') || 'bn';
-
             if (login) {
                 tabLogin.classList.add('active');
                 tabRegister.classList.remove('active');
@@ -1234,6 +1314,30 @@
                 authBtnText.textContent = translations[currentLang].btn_reg_submit;
             }
         }
+
+        // --- User Tab Switching Logic (Inquiry vs Status) ---
+        const btnShowInquiry = document.getElementById('btnShowInquiry');
+        const btnShowStatus = document.getElementById('btnShowStatus');
+        const userTabInquiry = document.getElementById('userTabInquiry');
+        const userTabStatus = document.getElementById('userTabStatus');
+
+        btnShowInquiry.addEventListener('click', () => {
+            userTabInquiry.classList.remove('hidden');
+            userTabStatus.classList.add('hidden');
+            btnShowInquiry.classList.add('bg-brand-primary', 'text-white');
+            btnShowInquiry.classList.remove('bg-slate-200', 'text-slate-600');
+            btnShowStatus.classList.remove('bg-brand-primary', 'text-white');
+            btnShowStatus.classList.add('bg-slate-200', 'text-slate-600');
+        });
+
+        btnShowStatus.addEventListener('click', () => {
+            userTabInquiry.classList.add('hidden');
+            userTabStatus.classList.remove('hidden');
+            btnShowStatus.classList.add('bg-brand-primary', 'text-white');
+            btnShowStatus.classList.remove('bg-slate-200', 'text-slate-600');
+            btnShowInquiry.classList.remove('bg-brand-primary', 'text-white');
+            btnShowInquiry.classList.add('bg-slate-200', 'text-slate-600');
+        });
 
         // --- 1. Authentication Setup ---
         const initAuth = async () => {
@@ -1250,16 +1354,27 @@
                 setTimeout(() => loadingOverlay.classList.add('hidden'), 300);
 
                 if (user) {
+                    // User Logged In
                     authContainer.classList.add('hidden');
                     inquiryContainer.classList.remove('hidden');
                     displayEmail.textContent = user.email || "Google User";
                     navLogoutBtn.classList.remove('hidden');
                     mobileLogoutBtn.classList.remove('hidden');
+
+                    // Check for Admin Access
+                    if(user.email === ADMIN_EMAIL) {
+                        adminSection.classList.remove('hidden');
+                    } else {
+                        adminSection.classList.add('hidden');
+                    }
+
                 } else {
+                    // User Logged Out
                     authContainer.classList.remove('hidden');
                     inquiryContainer.classList.add('hidden');
                     navLogoutBtn.classList.add('hidden');
                     mobileLogoutBtn.classList.add('hidden');
+                    adminSection.classList.add('hidden');
                 }
             });
         };
@@ -1295,9 +1410,9 @@
             } catch (error) {
                 console.error(error);
                 let msg = error.message;
-                if (error.code === 'auth/email-already-in-use') msg = 'এই ইমেইলটি ইতিমধ্যে ব্যবহৃত হচ্ছে।';
-                if (error.code === 'auth/wrong-password') msg = 'ভুল পাসওয়ার্ড।';
-                if (error.code === 'auth/user-not-found') msg = 'ব্যবহারকারী পাওয়া যায়নি।';
+                if(error.code === 'auth/email-already-in-use') msg = 'এই ইমেইলটি ইতিমধ্যে ব্যবহৃত হচ্ছে।';
+                if(error.code === 'auth/wrong-password') msg = 'ভুল পাসওয়ার্ড।';
+                if(error.code === 'auth/user-not-found') msg = 'ব্যবহারকারী পাওয়া যায়নি।';
                 showToast(msg, 'error');
             }
         });
@@ -1314,7 +1429,7 @@
         navLogoutBtn.addEventListener('click', handleLogout);
         mobileLogoutBtn.addEventListener('click', handleLogout);
 
-        // --- 3. Data Submission ---
+        // --- 3. Customer Data Submission (Inquiry) ---
         document.getElementById('contactForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const user = auth.currentUser;
@@ -1354,6 +1469,150 @@
                 lucide.createIcons();
             }
         });
+
+        // --- 4. Customer: Check Progress Logic ---
+        document.getElementById('btnCheckStatus').addEventListener('click', async () => {
+            const refNo = document.getElementById('checkRefInput').value.trim();
+            const resultArea = document.getElementById('statusResult');
+            const statusText = document.getElementById('resStatusText');
+            const progressBar = document.getElementById('resProgressBar');
+            const serviceName = document.getElementById('resServiceName');
+
+            if(!refNo) {
+                showToast('রেফারেন্স নম্বর লিখুন', 'error');
+                return;
+            }
+
+            try {
+                // Search in 'work_orders' collection
+                const colRef = collection(db, 'artifacts', appId, 'public', 'data', 'work_orders');
+                const q = query(colRef, where("refNumber", "==", refNo));
+                const querySnapshot = await getDocs(q);
+
+                if (querySnapshot.empty) {
+                     resultArea.classList.add('hidden');
+                     showToast('কোনো তথ্য পাওয়া যায়নি। নম্বরটি চেক করুন।', 'error');
+                } else {
+                    querySnapshot.forEach((doc) => {
+                        const data = doc.data();
+                        resultArea.classList.remove('hidden');
+                        
+                        statusText.textContent = data.statusText || "Processing";
+                        progressBar.style.width = data.progress + "%";
+                        serviceName.textContent = `Service: ${data.serviceType} | Customer: ${data.customerName}`;
+
+                        // Color Logic
+                        if(data.progress == 100) {
+                            progressBar.classList.remove('bg-brand-orange');
+                            progressBar.classList.add('bg-green-500');
+                            statusText.classList.remove('text-brand-orange', 'bg-orange-100');
+                            statusText.classList.add('text-green-600', 'bg-green-100');
+                        } else {
+                            progressBar.classList.add('bg-brand-orange');
+                            progressBar.classList.remove('bg-green-500');
+                            statusText.classList.add('text-brand-orange', 'bg-orange-100');
+                            statusText.classList.remove('text-green-600', 'bg-green-100');
+                        }
+                    });
+                }
+            } catch (error) {
+                console.error("Search Error", error);
+                showToast("সার্ভার এরর। পরে চেষ্টা করুন।", "error");
+            }
+        });
+
+        // --- 5. Admin Dashboard Logic ---
+        
+        // Generate Random Reference Number
+        document.getElementById('btnGenRef').addEventListener('click', () => {
+            const random = Math.floor(100000 + Math.random() * 900000);
+            document.getElementById('admRefNo').value = "REF-" + random;
+        });
+
+        // Create New Order
+        document.getElementById('adminCreateForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const user = auth.currentUser;
+            if(!user || user.email !== ADMIN_EMAIL) {
+                showToast("Unauthorized Access", "error");
+                return;
+            }
+
+            const name = document.getElementById('admCustName').value;
+            const ref = document.getElementById('admRefNo').value;
+            const service = document.getElementById('admService').value;
+
+            if(!ref) { showToast("Generate Ref No first", "error"); return; }
+
+            try {
+                const colRef = collection(db, 'artifacts', appId, 'public', 'data', 'work_orders');
+                await addDoc(colRef, {
+                    refNumber: ref,
+                    customerName: name,
+                    serviceType: service,
+                    progress: 0,
+                    statusText: "Order Received",
+                    createdAt: serverTimestamp(),
+                    createdBy: user.email
+                });
+                showToast("Order Created Successfully!", "success");
+                document.getElementById('adminCreateForm').reset();
+                document.getElementById('adminCreateResult').textContent = `Success! Share this Ref No: ${ref}`;
+                document.getElementById('adminCreateResult').classList.remove('hidden');
+            } catch (error) {
+                console.error(error);
+                showToast("Failed to create order", "error");
+            }
+        });
+
+        // Admin: Search Order to Update
+        let currentDocId = null;
+        document.getElementById('btnAdmSearch').addEventListener('click', async () => {
+            const ref = document.getElementById('admSearchRef').value.trim();
+            const updateArea = document.getElementById('admUpdateArea');
+            
+            if(!ref) return;
+
+            const colRef = collection(db, 'artifacts', appId, 'public', 'data', 'work_orders');
+            const q = query(colRef, where("refNumber", "==", ref));
+            const querySnapshot = await getDocs(q);
+
+            if(querySnapshot.empty) {
+                showToast("Order not found", "error");
+                updateArea.classList.add('hidden');
+            } else {
+                querySnapshot.forEach((doc) => {
+                    currentDocId = doc.id;
+                    const data = doc.data();
+                    updateArea.classList.remove('hidden');
+                    document.getElementById('admEditName').textContent = `${data.customerName} (${data.serviceType})`;
+                    document.getElementById('admEditProg').value = data.progress;
+                    document.getElementById('admEditText').value = data.statusText;
+                });
+            }
+        });
+
+        // Admin: Perform Update
+        document.getElementById('btnAdmUpdate').addEventListener('click', async () => {
+            if(!currentDocId) return;
+            
+            const prog = document.getElementById('admEditProg').value;
+            const txt = document.getElementById('admEditText').value;
+
+            try {
+                const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'work_orders', currentDocId);
+                await updateDoc(docRef, {
+                    progress: parseInt(prog),
+                    statusText: txt,
+                    lastUpdated: serverTimestamp()
+                });
+                showToast("Progress Updated Successfully!", "success");
+            } catch(error) {
+                console.error(error);
+                showToast("Update Failed", "error");
+            }
+        });
+
     </script>
 </body>
 
